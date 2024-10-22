@@ -1,8 +1,8 @@
 {
 	"SourceFiles": [
-		"C:\\Users\\joshu\\Downloads\\WarCreek\\Source\\FPSGame\\FPSGame.Build.cs",
-		"C:\\Users\\joshu\\Downloads\\WarCreek\\Source\\FPSGame.Target.cs",
-		"C:\\Users\\joshu\\Downloads\\WarCreek\\Source\\FPSGameEditor.Target.cs"
+		"C:\\Users\\joshu\\OneDrive\\Documents\\GitHub\\Capstone-2024-WarCreek\\Source\\FPSGame\\FPSGame.Build.cs",
+		"C:\\Users\\joshu\\OneDrive\\Documents\\GitHub\\Capstone-2024-WarCreek\\Source\\FPSGame.Target.cs",
+		"C:\\Users\\joshu\\OneDrive\\Documents\\GitHub\\Capstone-2024-WarCreek\\Source\\FPSGameEditor.Target.cs"
 	],
 	"EngineVersion": "5.3.2"
 }
