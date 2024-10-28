@@ -67,7 +67,7 @@ void AFPSCharacterUE5Character::Tick(float dt)
 
 void AFPSCharacterUE5Character::BeginPlay()
 {
-	// Call the base class  
+	// Call the base class  / 
 	Super::BeginPlay();
 
 	//Add Input Mapping Context
