@@ -50,6 +50,9 @@ AFPSCharacterUE5Character::AFPSCharacterUE5Character()
 
 	SetReplicates(true);
 	SetReplicateMovement(true);
+
+
+	GetCharacterMovement()->MaxWalkSpeed = 500.f;
 }
 
 void AFPSCharacterUE5Character::Tick(float dt)
@@ -95,12 +98,12 @@ void AFPSCharacterUE5Character::TakeAnyDamage(AActor* DamagedActor, float Damage
 
 void AFPSCharacterUE5Character::StartSprint()
 {
-	GetCharacterMovement()->MaxWalkSpeed = 500.f;
+	GetCharacterMovement()->MaxWalkSpeed = 1000.f;
 }
 
 void AFPSCharacterUE5Character::StopSprint()
 {
-	GetCharacterMovement()->MaxWalkSpeed = 70.f;
+	GetCharacterMovement()->MaxWalkSpeed = 500.f;
 }
 
 void AFPSCharacterUE5Character::SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent)
