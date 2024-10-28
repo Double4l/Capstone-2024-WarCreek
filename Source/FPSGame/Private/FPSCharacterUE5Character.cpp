@@ -8,6 +8,7 @@
 #include "BombDamageType.h"
 #include "EnhancedInputComponent.h"
 #include "EnhancedInputSubsystems.h"
+#include "GameFramework/CharacterMovementComponent.h"
 
 
 //////////////////////////////////////////////////////////////////////////
@@ -45,7 +46,6 @@ AFPSCharacterUE5Character::AFPSCharacterUE5Character()
 
 	//SET HeldBomb to null
 	HeldBomb = nullptr;
-
 	IsAbleToFire = true;
 
 	SetReplicates(true);
@@ -78,14 +78,6 @@ void AFPSCharacterUE5Character::BeginPlay()
 
 }
 
-
-
-
-
-
-
-
-
 void AFPSCharacterUE5Character::TakeAnyDamage(AActor* DamagedActor, float Damage, const class UDamageType* DamageType, class AController* InstigatedBy, AActor* DamageCauser)
 {
 	GEngine->AddOnScreenDebugMessage(-1, 3, FColor::Green, "Damage Received - " + FString::FromInt(Damage) + " Instigated By: " + InstigatedBy->GetName());
@@ -101,16 +93,15 @@ void AFPSCharacterUE5Character::TakeAnyDamage(AActor* DamagedActor, float Damage
 
 }
 
+void AFPSCharacterUE5Character::StartSprint()
+{
+	GetCharacterMovement()->MaxWalkSpeed = 500.f;
+}
 
-
-
-
-
-
-
-
-
-//////////////////////////////////////////////////////////////////////////// Input
+void AFPSCharacterUE5Character::StopSprint()
+{
+	GetCharacterMovement()->MaxWalkSpeed = 70.f;
+}
 
 void AFPSCharacterUE5Character::SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent)
 {
@@ -120,6 +111,10 @@ void AFPSCharacterUE5Character::SetupPlayerInputComponent(class UInputComponent*
 		//Jumping
 		EnhancedInputComponent->BindAction(JumpAction, ETriggerEvent::Triggered, this, &ACharacter::Jump);
 		EnhancedInputComponent->BindAction(JumpAction, ETriggerEvent::Completed, this, &ACharacter::StopJumping);
+
+		// Sprinting 
+		EnhancedInputComponent->BindAction(SprintAction, ETriggerEvent::Triggered, this, &AFPSCharacterUE5Character::StartSprint);
+		EnhancedInputComponent->BindAction(SprintAction, ETriggerEvent::Completed, this, &AFPSCharacterUE5Character::StopSprint);
 
 		//Moving
 		EnhancedInputComponent->BindAction(MoveAction, ETriggerEvent::Triggered, this, &AFPSCharacterUE5Character::Move);
@@ -131,7 +126,6 @@ void AFPSCharacterUE5Character::SetupPlayerInputComponent(class UInputComponent*
 		EnhancedInputComponent->BindAction(BombAction, ETriggerEvent::Completed, this, &AFPSCharacterUE5Character::Server_ThrowBomb);
 	}
 }
-
 
 void AFPSCharacterUE5Character::Move(const FInputActionValue& Value)
 {
@@ -214,8 +208,6 @@ void AFPSCharacterUE5Character::Server_ThrowBomb_Implementation()
 	}
 	//ENDIF
 }
-
-
 
 AActor* AFPSCharacterUE5Character::RayCastGetActor()
 {

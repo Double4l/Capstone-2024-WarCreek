@@ -42,6 +42,10 @@ class AFPSCharacterUE5Character : public ACharacter
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Input, meta=(AllowPrivateAccess = "true"))
 	class UInputAction* MoveAction;
 
+	/** Sprint Input Action */
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
+	UInputAction* SprintAction;
+
 	
 public:
 	AFPSCharacterUE5Character();
@@ -114,6 +118,12 @@ public:
 	UCameraComponent* GetFirstPersonCameraComponent() const { return FirstPersonCameraComponent; }
 
 	bool GetIsAbleToFire() { return IsAbleToFire; }
+
+
+
+protected:
+	void StartSprint();
+	void StopSprint();
 
 
 };
