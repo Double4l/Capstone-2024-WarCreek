@@ -109,6 +109,8 @@
     <None Include="..\..\FPSGame.uproject"/>
     <None Include="..\..\Source\FPSGame.Target.cs"/>
     <None Include="..\..\Source\FPSGameEditor.Target.cs"/>
+    <None Include="..\..\.gitattributes"/>
+    <None Include="..\..\.gitignore"/>
     <None Include="..\..\.vsconfig"/>
     <None Include="..\..\del_fd.bat"/>
     <None Include="..\..\Config\DefaultEditor.ini"/>
@@ -117,6 +119,11 @@
     <None Include="..\..\Config\DefaultInput.ini"/>
     <None Include="..\..\Source\FPSGame\FPSGame.Build.cs"/>
     <ClCompile Include="..\..\Source\FPSGame\Private\BombDamageType.cpp">
+      <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <ForcedIncludeFiles>$(ClCompile_ForcedIncludeFiles)</ForcedIncludeFiles>
+      <AdditionalOptions>$(ClCompile_AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\FPSGame\Private\CoinSpawner.cpp">
       <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ForcedIncludeFiles>$(ClCompile_ForcedIncludeFiles)</ForcedIncludeFiles>
       <AdditionalOptions>$(ClCompile_AdditionalOptions)</AdditionalOptions>
@@ -162,6 +169,7 @@
       <AdditionalOptions>$(ClCompile_AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <ClInclude Include="..\..\Source\FPSGame\Public\BombDamageType.h"/>
+    <ClInclude Include="..\..\Source\FPSGame\Public\CoinSpawner.h"/>
     <ClInclude Include="..\..\Source\FPSGame\Public\FPSBombActor.h"/>
     <None Include="..\..\Source\FPSGame\Public\FPSCharacterUE5.Build.cs"/>
     <ClInclude Include="..\..\Source\FPSGame\Public\FPSCharacterUE5.h"/>
