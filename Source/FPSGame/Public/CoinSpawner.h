@@ -23,4 +23,24 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
+public: 
+
+	UFUNCTION(Server, Reliable)
+	void Server_Spawn();
+
+public:
+	//UPROPERTY(EditAnywhere, Category = "Pickup To Spawn")
+	//TSubclassOf<class APickupActor> PickupToSpawn;
+
+	UPROPERTY(EditAnywhere, Category = "Pos Range")
+	float MinPosRange;
+
+	UPROPERTY(EditAnywhere, Category = "Pos Range")
+	float MaxPosRange;
+
+	FTimerHandle SpawnTimerHandler;
+
+	UPROPERTY(EditAnywhere, Category = "Max Pickups")
+	int MaxPickups;
+
 };
