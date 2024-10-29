@@ -28,6 +28,10 @@ public:
 	UFUNCTION(Server, Reliable)
 	void Server_Spawn();
 
+	UFUNCTION(Server, Reliable)
+	void Server_SpawnPickups();
+
+
 public:
 	UPROPERTY(EditAnywhere, Category = "Pickup To Spawn")
 	TSubclassOf<class ACoinActor> PickupToSpawn;

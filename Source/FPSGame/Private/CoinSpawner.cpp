@@ -16,6 +16,7 @@ ACoinSpawner::ACoinSpawner()
 void ACoinSpawner::BeginPlay()
 {
 	Super::BeginPlay();	
+	Server_SpawnPickups();
 }
 
 // Called every frame
@@ -40,4 +41,13 @@ void ACoinSpawner::Server_Spawn_Implementation()
 
 		World->SpawnActor<ACoinActor>(PickupToSpawn, SpawnPosition, SpawnRotation, ActorSpawnParams);
 	}
+}
+
+void ACoinSpawner::Server_SpawnPickups_Implementation()
+{
+	for (int i = 0; i < 10; i++) // MaxPickups
+	{
+		Server_Spawn();
+	}
+
 }
