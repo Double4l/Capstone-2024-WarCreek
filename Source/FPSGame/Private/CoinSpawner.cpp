@@ -2,6 +2,7 @@
 
 
 #include "CoinSpawner.h"
+#include "CoinActor.h"
 
 
 // Sets default values
@@ -37,6 +38,6 @@ void ACoinSpawner::Server_Spawn_Implementation()
 		FActorSpawnParameters ActorSpawnParams;
 		ActorSpawnParams.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AdjustIfPossibleButDontSpawnIfColliding;
 
-		//World->SpawnActor<APickupActor>(PickupToSpawn, SpawnPosition, SpawnRotation, ActorSpawnParams);
+		World->SpawnActor<ACoinActor>(PickupToSpawn, SpawnPosition, SpawnRotation, ActorSpawnParams);
 	}
 }
