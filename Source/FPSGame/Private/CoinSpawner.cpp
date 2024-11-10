@@ -33,7 +33,7 @@ void ACoinSpawner::Server_Spawn_Implementation()
 		float X = FMath::RandRange(MinPosRange, MaxPosRange);
 		float Y = FMath::RandRange(MinPosRange, MaxPosRange);
 
-		FVector SpawnPosition = FVector(X, Y, 0);
+		FVector SpawnPosition = FVector(X, Y, 300);
 		const FRotator SpawnRotation = FRotator(0, 0, 0);
 
 		FActorSpawnParameters ActorSpawnParams;
@@ -45,7 +45,7 @@ void ACoinSpawner::Server_Spawn_Implementation()
 
 void ACoinSpawner::Server_SpawnPickups_Implementation()
 {
-	for (int i = 0; i < 10; i++) // MaxPickups
+	for (int i = 0; i < MaxPickups; i++) // MaxPickups
 	{
 		Server_Spawn();
 	}
