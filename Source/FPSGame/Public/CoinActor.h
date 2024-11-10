@@ -19,6 +19,10 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
+	UFUNCTION()
+	void OnOverlapBegin(AActor* OverlappedActor, AActor* OtherActor);
+
+
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;

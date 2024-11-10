@@ -2,6 +2,7 @@
 
 
 #include "CoinActor.h"
+#include "FPSCharacterUE5Character.h"
 
 // Sets default values
 ACoinActor::ACoinActor()
@@ -9,6 +10,9 @@ ACoinActor::ACoinActor()
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
+
+	SetReplicates(true);
+	SetReplicateMovement(true);
 }
 
 // Called when the game starts or when spawned
@@ -16,6 +20,11 @@ void ACoinActor::BeginPlay()
 {
 	Super::BeginPlay();
 	
+	//WE only want to detect Overlaps on the Server
+	//if (GetLocalRole() == ROLE_Authority)
+	//{
+		OnActorBeginOverlap.AddDynamic(this, &ACoinActor::OnOverlapBegin);
+	//}
 }
 
 // Called every frame
@@ -24,4 +33,24 @@ void ACoinActor::Tick(float DeltaTime)
 	Super::Tick(DeltaTime);
 
 }
+void ACoinActor::OnOverlapBegin(AActor* OverlappedActor, AActor* OtherActor)
+{
+	AFPSCharacterUE5Character* Character = Cast<AFPSCharacterUE5Character>(OtherActor);
+	ACoinActor* Pickup = Cast<ACoinActor>(OverlappedActor);
+
+	if (Character != nullptr)
+	{
+		if (Pickup != nullptr) 
+		{
+			UWorld* World = GetWorld();
+			if (World != nullptr) 
+			{
+				Destroy();
+			}
+		}
+	}
+
+}
+
+
 
