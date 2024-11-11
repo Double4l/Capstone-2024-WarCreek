@@ -38,11 +38,15 @@ void ACoinActor::OnOverlapBegin(AActor* OverlappedActor, AActor* OtherActor)
 	AFPSCharacterUE5Character* Character = Cast<AFPSCharacterUE5Character>(OtherActor);
 	ACoinActor* Pickup = Cast<ACoinActor>(OverlappedActor);
 
+	// Checks If Character exist
 	if (Character != nullptr)
 	{
+		// Checks If Pickup exist
 		if (Pickup != nullptr) 
 		{
 			UWorld* World = GetWorld();
+			// Checks If World Exist
+
 			if (World != nullptr) 
 			{
 				Destroy();
