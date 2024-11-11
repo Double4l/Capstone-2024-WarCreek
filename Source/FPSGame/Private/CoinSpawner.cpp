@@ -25,6 +25,7 @@ void ACoinSpawner::Tick(float DeltaTime)
 	Super::Tick(DeltaTime);
 }
 
+// Spawn implementation
 void ACoinSpawner::Server_Spawn_Implementation()
 {
 	UWorld* const World = GetWorld();
@@ -45,6 +46,7 @@ void ACoinSpawner::Server_Spawn_Implementation()
 
 void ACoinSpawner::Server_SpawnPickups_Implementation()
 {
+
 	for (int i = 0; i < MaxPickups; i++) // MaxPickups
 	{
 		Server_Spawn();
