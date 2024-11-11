@@ -49,6 +49,7 @@ void ACoinActor::OnOverlapBegin(AActor* OverlappedActor, AActor* OtherActor)
 
 			if (World != nullptr) 
 			{
+				// destroy actor
 				Destroy();
 			}
 		}
