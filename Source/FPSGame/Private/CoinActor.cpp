@@ -21,10 +21,10 @@ void ACoinActor::BeginPlay()
 	Super::BeginPlay();
 	
 	//WE only want to detect Overlaps on the Server
-	//if (GetLocalRole() == ROLE_Authority)
-	//{
+	if (GetLocalRole() == ROLE_Authority)
+	{
 		OnActorBeginOverlap.AddDynamic(this, &ACoinActor::OnOverlapBegin);
-	//}
+	}
 }
 
 // Called every frame
