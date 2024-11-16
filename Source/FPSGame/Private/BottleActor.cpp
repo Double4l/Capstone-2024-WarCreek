@@ -15,7 +15,17 @@ ABottleActor::ABottleActor()
 void ABottleActor::BeginPlay()
 {
 	Super::BeginPlay();
-	
+
+	//WE only want to detect Overlaps on the Server
+	if (GetLocalRole() == ROLE_Authority)
+	{
+		OnActorBeginOverlap.AddDynamic(this, &ABottleActor::OnOverlapBegin);
+	}
+}
+
+void ABottleActor::OnOverlapBegin(AActor* OverlappedActor, AActor* OtherActor)
+{
+
 }
 
 // Called every frame
