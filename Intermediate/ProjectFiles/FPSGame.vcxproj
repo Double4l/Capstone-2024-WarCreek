@@ -123,6 +123,11 @@
       <ForcedIncludeFiles>$(ClCompile_ForcedIncludeFiles)</ForcedIncludeFiles>
       <AdditionalOptions>$(ClCompile_AdditionalOptions)</AdditionalOptions>
     </ClCompile>
+    <ClCompile Include="..\..\Source\FPSGame\Private\BottleActor.cpp">
+      <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <ForcedIncludeFiles>$(ClCompile_ForcedIncludeFiles)</ForcedIncludeFiles>
+      <AdditionalOptions>$(ClCompile_AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
     <ClCompile Include="..\..\Source\FPSGame\Private\CoinActor.cpp">
       <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ForcedIncludeFiles>$(ClCompile_ForcedIncludeFiles)</ForcedIncludeFiles>
@@ -174,6 +179,7 @@
       <AdditionalOptions>$(ClCompile_AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <ClInclude Include="..\..\Source\FPSGame\Public\BombDamageType.h"/>
+    <ClInclude Include="..\..\Source\FPSGame\Public\BottleActor.h"/>
     <ClInclude Include="..\..\Source\FPSGame\Public\CoinActor.h"/>
     <ClInclude Include="..\..\Source\FPSGame\Public\CoinSpawner.h"/>
     <ClInclude Include="..\..\Source\FPSGame\Public\FPSBombActor.h"/>
