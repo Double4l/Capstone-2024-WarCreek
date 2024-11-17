@@ -168,6 +168,11 @@
       <ForcedIncludeFiles>$(ClCompile_ForcedIncludeFiles)</ForcedIncludeFiles>
       <AdditionalOptions>$(ClCompile_AdditionalOptions)</AdditionalOptions>
     </ClCompile>
+    <ClCompile Include="..\..\Source\FPSGame\Private\TargetSpawner.cpp">
+      <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <ForcedIncludeFiles>$(ClCompile_ForcedIncludeFiles)</ForcedIncludeFiles>
+      <AdditionalOptions>$(ClCompile_AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
     <ClCompile Include="..\..\Source\FPSGame\Private\TP_PickUpComponent.cpp">
       <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ForcedIncludeFiles>$(ClCompile_ForcedIncludeFiles)</ForcedIncludeFiles>
@@ -189,6 +194,7 @@
     <ClInclude Include="..\..\Source\FPSGame\Public\FPSGameMode.h"/>
     <ClInclude Include="..\..\Source\FPSGame\Public\FPSHUD.h"/>
     <ClInclude Include="..\..\Source\FPSGame\Public\FPSProjectile.h"/>
+    <ClInclude Include="..\..\Source\FPSGame\Public\TargetSpawner.h"/>
     <ClInclude Include="..\..\Source\FPSGame\Public\TP_PickUpComponent.h"/>
     <ClInclude Include="..\..\Source\FPSGame\Public\TP_WeaponComponent.h"/>
   </ItemGroup>
