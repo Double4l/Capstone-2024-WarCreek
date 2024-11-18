@@ -28,4 +28,11 @@ public:
 
 	UPROPERTY(EditAnywhere, Category = "Spawn Points")
 	TArray<AActor *> SpawnPoints;
+
+public:
+	UFUNCTION(Server, Reliable)
+	void Server_Spawn(AActor *SpawnPoint);
+
+	UFUNCTION(Server, Reliable)
+	void Server_SpawnTargets();
 };
