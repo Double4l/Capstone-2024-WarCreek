@@ -2,6 +2,8 @@
 
 
 #include "TargetSpawner.h"
+#include "BottleActor.h"
+#include <iostream>
 
 // Sets default values
 ATargetSpawner::ATargetSpawner()
@@ -15,6 +17,14 @@ ATargetSpawner::ATargetSpawner()
 void ATargetSpawner::BeginPlay()
 {
 	Super::BeginPlay();
+
+	int n = sizeof(SpawnPoints) / sizeof(SpawnPoints[0]);
+	std::cout << "Hellooooooooooooooooooooooooooooooooooooooooooooooooooooooooo" + n << std::endl;
+
+	for (int i = 0; i < SpawnPoints.Num(); i++) {
+		SpawnPoints[i]->Destroy();
+	}
+
 	
 }
 

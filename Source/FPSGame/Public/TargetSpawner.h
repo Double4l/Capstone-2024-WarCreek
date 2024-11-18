@@ -24,7 +24,8 @@ public:
 	virtual void Tick(float DeltaTime) override;
 
 public:
+	int NumberOfTargets = 0;
 
 	UPROPERTY(EditAnywhere, Category = "Spawn Points")
-	TArray<FString> SpawnPoints;
+	TArray<AActor *> SpawnPoints;
 };
