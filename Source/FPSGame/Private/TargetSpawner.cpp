@@ -41,7 +41,7 @@ void ATargetSpawner::Server_Spawn_Implementation(AActor *SpawnPoint)
 		ActorSpawnParams.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AdjustIfPossibleButDontSpawnIfColliding;
 
 		//World->Spawn
-		World->SpawnActor<ABottleActor>(SpawnPosition, SpawnRotation, ActorSpawnParams);
+		World->SpawnActor<ABottleActor>(PickupToSpawn, SpawnPosition, SpawnRotation, ActorSpawnParams);
 	}
 }
 

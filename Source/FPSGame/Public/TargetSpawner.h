@@ -30,6 +30,9 @@ public:
 	TArray<AActor *> SpawnPoints;
 
 public:
+	UPROPERTY(EditAnywhere, Category = "Pickup To Spawn")
+	TSubclassOf<class AActor> PickupToSpawn;
+
 	UFUNCTION(Server, Reliable)
 	void Server_Spawn(AActor *SpawnPoint);
 
