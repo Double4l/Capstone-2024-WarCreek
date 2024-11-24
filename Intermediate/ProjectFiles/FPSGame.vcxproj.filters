@@ -27,6 +27,9 @@
     <None Include="..\..\Config\DefaultGame.ini">
       <Filter>Config</Filter>
     </None>
+    <None Include="..\..\Config\DefaultGameplayTags.ini">
+      <Filter>Config</Filter>
+    </None>
     <None Include="..\..\Config\DefaultInput.ini">
       <Filter>Config</Filter>
     </None>
@@ -39,6 +42,9 @@
     <Filter Include="Source\FPSGame\Private">
       <UniqueIdentifier>{8C076378-72A9-37D4-9694-E0F73BBEB760}</UniqueIdentifier>
     </Filter>
+    <ClCompile Include="..\..\Source\FPSGame\Private\AppleActor.cpp">
+      <Filter>Source\FPSGame\Private</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\FPSGame\Private\BombDamageType.cpp">
       <Filter>Source\FPSGame\Private</Filter>
     </ClCompile>
@@ -81,6 +87,9 @@
     <Filter Include="Source\FPSGame\Public">
       <UniqueIdentifier>{DF6A9987-3503-33D0-8038-411697992443}</UniqueIdentifier>
     </Filter>
+    <ClInclude Include="..\..\Source\FPSGame\Public\AppleActor.h">
+      <Filter>Source\FPSGame\Public</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\Source\FPSGame\Public\BombDamageType.h">
       <Filter>Source\FPSGame\Public</Filter>
     </ClInclude>
