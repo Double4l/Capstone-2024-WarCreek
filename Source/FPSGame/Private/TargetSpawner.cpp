@@ -41,7 +41,9 @@ void ATargetSpawner::Server_Spawn_Implementation(AActor *SpawnPoint)
 		ActorSpawnParams.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AdjustIfPossibleButDontSpawnIfColliding;
 
 		//World->Spawn
-		World->SpawnActor<ABottleActor>(PickupToSpawn, SpawnPosition, SpawnRotation, ActorSpawnParams);
+
+		int position = FMath::RandRange(0, PickupTypes.Num() - 1);
+		World->SpawnActor<AActor>(PickupTypes[position], SpawnPosition, SpawnRotation, ActorSpawnParams);
 	}
 }
 
@@ -49,7 +51,8 @@ void ATargetSpawner::Server_SpawnTargets_Implementation()
 {
 
 	for (int i = 0; i < SpawnPoints.Num(); i++) {
-		//SpawnPoints[i]->Destroy();
+		//AActor Target = PickupTypes[1];
+
 		Server_Spawn(SpawnPoints[i]);
 	}
 }
