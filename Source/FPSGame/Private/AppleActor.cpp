@@ -18,6 +18,17 @@ void AAppleActor::BeginPlay()
 	
 }
 
+void AAppleActor::NMC_Explode_Implementation() 
+{
+
+}
+
+// Called when the game starts or when spawned
+void AAppleActor::DestroyApple()
+{
+	Destroy();
+}
+
 // Called every frame
 void AAppleActor::Tick(float DeltaTime)
 {

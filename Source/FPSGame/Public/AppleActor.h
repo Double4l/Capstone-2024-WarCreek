@@ -19,6 +19,12 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
+	UFUNCTION()
+	void DestroyApple();
+
+	UFUNCTION(NetMulticast, Reliable)
+	void NMC_Explode();
+
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;

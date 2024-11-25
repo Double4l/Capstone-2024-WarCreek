@@ -22,6 +22,12 @@ protected:
 	UFUNCTION()
 	void OnOverlapBegin(AActor* OverlappedActor, AActor* OtherActor);
 
+	UFUNCTION()
+	void DestroyBottle();
+
+	UFUNCTION(NetMulticast, Reliable)
+	void NMC_Explode();
+
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;

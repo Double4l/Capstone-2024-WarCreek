@@ -28,6 +28,17 @@ void ABottleActor::OnOverlapBegin(AActor* OverlappedActor, AActor* OtherActor)
 
 }
 
+void ABottleActor::NMC_Explode_Implementation()
+{
+
+}
+
+// Called when the game starts or when spawned
+void ABottleActor::DestroyBottle()
+{
+	Destroy();
+}
+
 // Called every frame
 void ABottleActor::Tick(float DeltaTime)
 {
