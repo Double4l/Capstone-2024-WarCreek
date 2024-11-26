@@ -39,6 +39,17 @@ AAppleActor::AAppleActor()
 	RadialForceComp->bAutoActivate = false; // Prevent component from ticking, and only use FireImpulse() instead
 	//SET the RadialForceComp's bIgnoreOwningActor property to true (ignoring self)
 	RadialForceComp->bIgnoreOwningActor = true; // ignore self
+
+	//CALL SetSimulatePhysics() on the BombBox to true
+	SphereComp->SetSimulatePhysics(true);
+	//CALL SetCollisionEnabled() on BombBox and enable it to respond to Queries and Physics Collision
+	SphereComp->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
+	//CALL SetCollisionResponseToChannel() on the BombBox, Make it Ignore the Pawn
+	SphereComp->SetCollisionResponseToChannel(ECC_Pawn, ECR_Ignore); //Was ECR_Ignore
+
+	SphereComp->SetIsReplicated(true);
+	SetReplicates(true);
+	SetReplicateMovement(true);
 }
 
 // Called when the game starts or when spawned
@@ -56,6 +67,13 @@ void AAppleActor::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimi
 
 void AAppleActor::NMC_Explode_Implementation() 
 {
+	//SPAWN the ExplosionTemplate using UGameplayStatics::SpawnEmitterAtLocation(....)
+	UGameplayStatics::SpawnEmitterAtLocation(this, ExplosionTemplate, GetActorLocation());
+
+
+	// Blast away nearby physics actors by Calling FireImpulse() on the Radial Force Component
+	RadialForceComp->FireImpulse();
+
 	DestroyApple();
 }
 
