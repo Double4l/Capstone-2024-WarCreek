@@ -20,6 +20,9 @@ AFPSGameMode::AFPSGameMode()
 void AFPSGameMode::BeginPlay()
 {
 	Super::BeginPlay();
+
+	FTimerHandle TimerHandle;
+	GetWorldTimerManager().SetTimer(TimerHandle, this, &AFPSGameMode::StartCountdown, 1.f, true, 0.0);
 }
 
 void AFPSGameMode::PostLogin(APlayerController* PlayerController)
@@ -34,5 +37,25 @@ void AFPSGameMode::SpawnWeapon()
 	AActor* Weapon = GetWorld()->SpawnActor(WeaponTemplate, &SpawnPoint, &FRotator::ZeroRotator);
 	Weapon->SetReplicates(true);
 	SpawnPoint.X += WeaponOffset;
+}
+
+void AFPSGameMode::StartCountdown()
+{
+	if (Seconds != 0) 
+	{
+		Seconds -= 1;
+	}
+	else 
+	{
+		if (Minutes == 0) 
+		{
+			// Do some stuff when timer has finished
+		}
+		else
+		{
+			Minutes -= 1;
+			Seconds = 59;
+		}
+	}
 }
 

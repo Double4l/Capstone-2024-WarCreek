@@ -23,6 +23,15 @@ public:
 		virtual void PostLogin(APlayerController* PlayerController);
 		void SpawnWeapon();
 		FVector SpawnPoint;
+
+protected:
+	void StartCountdown();
+
+public:
+	int Minutes;
+	int Seconds;
+
+
 };
 
 
