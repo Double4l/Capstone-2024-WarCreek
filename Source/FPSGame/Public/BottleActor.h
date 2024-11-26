@@ -16,6 +16,13 @@ public:
 	ABottleActor();
 
 protected:
+	UPROPERTY(VisibleAnywhere, Category = "Components")
+	class URadialForceComponent* RadialForceComp;
+
+	UPROPERTY(VisibleAnywhere, Category = "Components")
+	class UCapsuleComponent* CapsuleComponent;
+
+protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 

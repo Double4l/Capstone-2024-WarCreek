@@ -34,7 +34,7 @@ void ATargetSpawner::Server_Spawn_Implementation(AActor *SpawnPoint)
 	UWorld* const World = GetWorld();
 	if (World != nullptr)
 	{
-		FVector SpawnPosition = SpawnPoint->GetActorLocation();
+		FVector SpawnPosition = SpawnPoint->GetActorLocation() +  FVector(0, 0, 50);;
 		const FRotator SpawnRotation = FRotator(0, 0, 0);
 
 		FActorSpawnParameters ActorSpawnParams;

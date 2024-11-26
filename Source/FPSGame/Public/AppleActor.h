@@ -16,6 +16,13 @@ public:
 	AAppleActor();
 
 protected:
+	UPROPERTY(VisibleAnywhere, Category = "Components")
+	class URadialForceComponent* RadialForceComp;
+
+	UPROPERTY(VisibleAnywhere, Category = "Components")
+	class USphereComponent* SphereComp;
+
+protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
@@ -28,5 +35,13 @@ protected:
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
+
+	UFUNCTION()
+	void OnHit(UPrimitiveComponent* HitComp,
+		AActor* OtherActor,
+		UPrimitiveComponent* OtherComp,
+		FVector NormalImpulse,
+		const FHitResult& Hit);
+
 
 };
