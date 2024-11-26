@@ -41,6 +41,17 @@ ABottleActor::ABottleActor()
 	//SET the RadialForceComp's bIgnoreOwningActor property to true (ignoring self)
 	RadialForceComp->bIgnoreOwningActor = true; // ignore self
 
+	//CALL SetSimulatePhysics() on the BombBox to true
+	CapsuleComp->SetSimulatePhysics(true);
+	//CALL SetCollisionEnabled() on BombBox and enable it to respond to Queries and Physics Collision
+	CapsuleComp->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
+	//CALL SetCollisionResponseToChannel() on the BombBox, Make it Ignore the Pawn
+	CapsuleComp->SetCollisionResponseToChannel(ECC_Pawn, ECR_Ignore); //Was ECR_Ignore
+
+	CapsuleComp->SetIsReplicated(true);
+	SetReplicates(true);
+	SetReplicateMovement(true);
+
 }
 
 // Called when the game starts or when spawned
@@ -62,6 +73,11 @@ void ABottleActor::OnOverlapBegin(AActor* OverlappedActor, AActor* OtherActor)
 
 void ABottleActor::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit)
 {
+	//SPAWN the ExplosionTemplate using UGameplayStatics::SpawnEmitterAtLocation(....)
+	UGameplayStatics::SpawnEmitterAtLocation(this, ExplosionTemplate, GetActorLocation());
+
+	// Blast away nearby physics actors by Calling FireImpulse() on the Radial Force Component
+	RadialForceComp->FireImpulse();
 
 	NMC_Explode();
 }

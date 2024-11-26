@@ -22,6 +22,9 @@ protected:
 	UPROPERTY(VisibleAnywhere, Category = "Components")
 	class UCapsuleComponent* CapsuleComp;
 
+	UPROPERTY(EditDefaultsOnly, Category = "BombActor")
+	UParticleSystem* ExplosionTemplate;
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
