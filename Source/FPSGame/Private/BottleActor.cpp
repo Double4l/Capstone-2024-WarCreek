@@ -5,6 +5,8 @@
 #include "PhysicsEngine/RadialForceComponent.h"
 #include "Components/StaticMeshComponent.h"
 #include "Components/CapsuleComponent.h"
+#include "kismet/GameplayStatics.h"
+#include "Engine/Engine.h"
 
 // Sets default values
 ABottleActor::ABottleActor()
@@ -12,6 +14,19 @@ ABottleActor::ABottleActor()
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 	// set up a notification for when this component hits something blocking
+
+	CapsuleComp = CreateDefaultSubobject<UCapsuleComponent>(TEXT("CapsullllllllleComp"));
+	CapsuleComp->SetCollisionProfileName("BlockAllDynamic");
+	CapsuleComp->OnComponentHit.AddDynamic(this, &ABottleActor::OnHit);	// set up a notification for when this component hits something blocking
+
+	// Players can't walk on it
+	//CALL SetWalkableSlopeOverride() on BombBox passing in WalkableSlope_Unwalkable, 0.f)
+	CapsuleComp->SetWalkableSlopeOverride(FWalkableSlopeOverride(WalkableSlope_Unwalkable, 0.f));
+	//SET CanCharacterStepUpOn on BombBox to ECB_No
+	CapsuleComp->CanCharacterStepUpOn = ECB_No;
+
+	//SET BombBox as the RootComponent
+	RootComponent = CapsuleComp;
 
 	//CREATE the RadialForceComp
 	RadialForceComp = CreateDefaultSubobject<URadialForceComponent>(TEXT("RadialForceComp"));
@@ -45,9 +60,15 @@ void ABottleActor::OnOverlapBegin(AActor* OverlappedActor, AActor* OtherActor)
 
 }
 
-void ABottleActor::NMC_Explode_Implementation()
+void ABottleActor::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit)
 {
 
+	NMC_Explode();
+}
+
+void ABottleActor::NMC_Explode_Implementation()
+{
+	DestroyBottle();
 }
 
 // Called when the game starts or when spawned

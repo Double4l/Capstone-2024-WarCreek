@@ -20,7 +20,7 @@ protected:
 	class URadialForceComponent* RadialForceComp;
 
 	UPROPERTY(VisibleAnywhere, Category = "Components")
-	class UCapsuleComponent* CapsuleComponent;
+	class UCapsuleComponent* CapsuleComp;
 
 protected:
 	// Called when the game starts or when spawned
@@ -38,5 +38,12 @@ protected:
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
+
+	UFUNCTION()
+	void OnHit(UPrimitiveComponent* HitComp,
+		AActor* OtherActor,
+		UPrimitiveComponent* OtherComp,
+		FVector NormalImpulse,
+		const FHitResult& Hit);
 
 };
