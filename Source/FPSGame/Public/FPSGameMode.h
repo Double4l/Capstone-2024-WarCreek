@@ -16,21 +16,20 @@ public:
 	AFPSGameMode();
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 		TSubclassOf<AActor> WeaponTemplate;
-	
+
+	UPROPERTY(BlueprintReadOnly)
+		int Minutes;
+
+	UPROPERTY(BlueprintReadOnly)
+		int Seconds;
+
+	void StartCountdown();
 
 	protected:
 		virtual void BeginPlay() override;
 		virtual void PostLogin(APlayerController* PlayerController);
 		void SpawnWeapon();
 		FVector SpawnPoint;
-
-protected:
-	void StartCountdown();
-
-public:
-	int Minutes;
-	int Seconds;
-
 
 };
 
