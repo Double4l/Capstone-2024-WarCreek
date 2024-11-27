@@ -39,6 +39,20 @@ void AFPSGameMode::SpawnWeapon()
 	SpawnPoint.X += WeaponOffset;
 }
 
+void AFPSGameMode::SpawnTargets()
+{
+	
+}
+
+void AFPSGameMode::HandleNewPlayer()
+{
+
+}
+void AFPSGameMode::RespawnPlayers()
+{
+
+}
+
 void AFPSGameMode::StartCountdown()
 {
 	if (Seconds != 0) 

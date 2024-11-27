@@ -30,6 +30,9 @@ public:
     UPROPERTY(EditAnywhere, Replicated)
     bool PlayerTwoLoggedIn;
 
+    UPROPERTY(EditAnywhere, Replicated)
+    int TargetsLeft;
+
 protected:
     virtual void BeginPlay() override;
 	

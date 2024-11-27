@@ -28,7 +28,12 @@ public:
 	protected:
 		virtual void BeginPlay() override;
 		virtual void PostLogin(APlayerController* PlayerController);
+
 		void SpawnWeapon();
+		void SpawnTargets();
+		void HandleNewPlayer();
+		void RespawnPlayers();
+
 		FVector SpawnPoint;
 
 };
