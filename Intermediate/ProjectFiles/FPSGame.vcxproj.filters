@@ -69,6 +69,9 @@
     <ClCompile Include="..\..\Source\FPSGame\Private\FPSGameMode.cpp">
       <Filter>Source\FPSGame\Private</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\FPSGame\Private\FPSGameStateBase.cpp">
+      <Filter>Source\FPSGame\Private</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\FPSGame\Private\FPSHUD.cpp">
       <Filter>Source\FPSGame\Private</Filter>
     </ClCompile>
@@ -115,6 +118,9 @@
       <Filter>Source\FPSGame\Public</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\FPSGame\Public\FPSGameMode.h">
+      <Filter>Source\FPSGame\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\FPSGame\Public\FPSGameStateBase.h">
       <Filter>Source\FPSGame\Public</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\FPSGame\Public\FPSHUD.h">
