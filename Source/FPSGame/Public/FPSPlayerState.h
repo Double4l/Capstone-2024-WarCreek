@@ -19,7 +19,7 @@ public:
 	int PlayerScore;
 
 	UPROPERTY(EditAnywhere, Replicated)
-	int HighestScore;
+	int PlayerHighestScore;
 
 
 };

@@ -12,6 +12,7 @@
 #include "FPSGameStateBase.h"
 #include "FPSGameMode.h"
 #include "FPSPlayerState.h"
+#include "Kismet/GameplayStatics.h"
 
 
 //////////////////////////////////////////////////////////////////////////
@@ -66,6 +67,22 @@ void AFPSCharacterUE5Character::Tick(float dt)
 	NewRotation.Pitch = RemoteViewPitch * 360.0f / 255.0f;
 
 	FirstPersonCameraComponent->SetRelativeRotation(NewRotation);
+
+	Super::Tick(dt);
+
+	if (GetCharacterPlayerState())
+	{
+		UKismetSystemLibrary::DrawDebugString(this, FVector(0.f, 0.f, -10.f), ":Team - " + FString::FromInt(GetCharacterPlayerState()->PlayerScore), this, FLinearColor::Green);
+		UKismetSystemLibrary::DrawDebugString(this, FVector(0.f, 0.f, -20.f), ":Pickups - " + FString::FromInt(GetCharacterPlayerState()->PlayerHighestScore), this, FLinearColor::Yellow);
+
+		if (GetLocalRole() == ROLE_AutonomousProxy || GetLocalRole() == ROLE_Authority)
+		{
+			UKismetSystemLibrary::DrawDebugString(this, FVector(0.f, 0.f, -40.f), ":PlayerController - " + GetController()->GetName(), this, FLinearColor::Yellow);
+
+			UKismetSystemLibrary::DrawDebugString(this, FVector(0.f, 0.f, -60.f), ":Pawn Class - " + GetName(), this, FLinearColor::Yellow);
+		}
+
+	}
 }
 
 void AFPSCharacterUE5Character::BeginPlay()
@@ -96,7 +113,6 @@ void AFPSCharacterUE5Character::TakeAnyDamage(AActor* DamagedActor, float Damage
 		SetHasRifle(false);
 		IsAbleToFire = false;
 	}
-
 }
 
 AFPSGameMode* AFPSCharacterUE5Character::GetGameMode()
