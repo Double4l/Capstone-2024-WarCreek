@@ -99,10 +99,10 @@ void AFPSCharacterUE5Character::TakeAnyDamage(AActor* DamagedActor, float Damage
 
 }
 
-//AFPSGameMode* AFPSCharacterUE5Character::GetGameMode()
-//{
-	//return Cast<FPSGameMode>(GetWorld()->GetGameMode());
-//}
+AFPSGameMode* AFPSCharacterUE5Character::GetGameMode()
+{
+	return Cast<AFPSGameMode>(GetWorld()->GetAuthGameMode());
+}
 
 AFPSPlayerState* AFPSCharacterUE5Character::GetCharacterPlayerState()
 {

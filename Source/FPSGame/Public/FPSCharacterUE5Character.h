@@ -128,6 +128,7 @@ protected:
 
 public: 
 	class AFPSPlayerState* GetCharacterPlayerState();
+	class AFPSGameMode* GetGameMode();
 
 
 
