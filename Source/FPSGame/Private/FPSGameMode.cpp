@@ -57,7 +57,7 @@ void AFPSGameMode::StartCountdown()
 {
 	if (Seconds != 0) 
 	{
-		Seconds -= 1;
+		Seconds = Seconds - 1;
 	}
 	else 
 	{
@@ -67,7 +67,7 @@ void AFPSGameMode::StartCountdown()
 		}
 		else
 		{
-			Minutes -= 1;
+			Minutes = Minutes - 1;
 			Seconds = 59;
 		}
 	}
