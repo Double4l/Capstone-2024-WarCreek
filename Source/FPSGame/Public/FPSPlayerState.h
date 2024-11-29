@@ -13,5 +13,13 @@ UCLASS()
 class FPSGAME_API AFPSPlayerState : public APlayerState
 {
 	GENERATED_BODY()
-	
+
+public:
+	UPROPERTY(EditAnywhere, Replicated)
+	int PlayerScore;
+
+	UPROPERTY(EditAnywhere, Replicated)
+	int HighestScore;
+
+
 };
