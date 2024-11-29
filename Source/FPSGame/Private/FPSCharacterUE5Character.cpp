@@ -140,6 +140,17 @@ void AFPSCharacterUE5Character::StopSprint()
 	GetCharacterMovement()->MaxWalkSpeed = 500.f;
 }
 
+void AFPSCharacterUE5Character::SetPlayerColor()
+{
+	
+}
+
+void AFPSCharacterUE5Character::NMC_SetTeamColor_Implementation(UMaterialInterface* NewMaterial)
+{
+	GetMesh()->SetMaterial(0, NewMaterial);
+}
+
+
 void AFPSCharacterUE5Character::SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent)
 {
 	// Set up action bindings

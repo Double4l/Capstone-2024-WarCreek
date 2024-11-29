@@ -124,12 +124,18 @@ public:
 protected:
 	void StartSprint();
 	void StopSprint();
+	void SetPlayerColor();
 
 
 public: 
 	class AFPSPlayerState* GetCharacterPlayerState();
 	class AFPSGameMode* GetGameMode();
 	class AFPSGameStateBase* GetGameState();
+
+public:
+	UFUNCTION(NetMulticast, Reliable)
+	void NMC_SetTeamColor(UMaterialInterface* NewMaterial);
+
 
 
 

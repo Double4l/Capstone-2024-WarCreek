@@ -33,6 +33,13 @@ public:
     UPROPERTY(EditAnywhere, Replicated)
     int TargetsLeft;
 
+    UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = Materials)
+    class UMaterialInterface* PlayerOneMaterial;
+
+    UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = Materials)
+    class UMaterialInterface* PlayerTwoMaterial;
+
+
 protected:
     virtual void BeginPlay() override;
 	
