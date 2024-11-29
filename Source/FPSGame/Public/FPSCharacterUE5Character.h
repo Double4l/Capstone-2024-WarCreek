@@ -126,5 +126,10 @@ protected:
 	void StopSprint();
 
 
+public: 
+	class AFPSPlayerState* GetCharacterPlayerState();
+
+
+
 };
 

@@ -9,6 +9,9 @@
 #include "EnhancedInputComponent.h"
 #include "EnhancedInputSubsystems.h"
 #include "GameFramework/CharacterMovementComponent.h"
+#include "FPSGameStateBase.h"
+#include "FPSGameMode.h"
+#include "FPSPlayerState.h"
 
 
 //////////////////////////////////////////////////////////////////////////
@@ -95,6 +98,17 @@ void AFPSCharacterUE5Character::TakeAnyDamage(AActor* DamagedActor, float Damage
 	}
 
 }
+
+//AFPSGameMode* AFPSCharacterUE5Character::GetGameMode()
+//{
+	//return Cast<FPSGameMode>(GetWorld()->GetGameMode());
+//}
+
+AFPSPlayerState* AFPSCharacterUE5Character::GetCharacterPlayerState()
+{
+	return Cast<AFPSPlayerState>(GetPlayerState());
+}
+
 
 void AFPSCharacterUE5Character::StartSprint()
 {
