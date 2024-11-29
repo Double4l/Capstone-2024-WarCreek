@@ -109,6 +109,10 @@ AFPSPlayerState* AFPSCharacterUE5Character::GetCharacterPlayerState()
 	return Cast<AFPSPlayerState>(GetPlayerState());
 }
 
+AFPSGameStateBase* AFPSCharacterUE5Character::GetGameState()
+{
+	return Cast<AFPSGameStateBase>(GetWorld()->GetGameState());
+}
 
 void AFPSCharacterUE5Character::StartSprint()
 {
