@@ -18,12 +18,15 @@ public:
 		TSubclassOf<AActor> WeaponTemplate;
 
 	UPROPERTY(BlueprintReadOnly)
-		int Minutes;
+		int Minutes = 10;
 
 	UPROPERTY(BlueprintReadOnly)
-		int Seconds;
+		int Seconds = 5;
 
 	void StartCountdown();
+
+	// Called every frame
+	virtual void Tick(float DeltaTime) override;
 
 	protected:
 		virtual void BeginPlay() override;

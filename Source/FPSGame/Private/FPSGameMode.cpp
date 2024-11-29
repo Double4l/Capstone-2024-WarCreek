@@ -22,7 +22,7 @@ void AFPSGameMode::BeginPlay()
 	Super::BeginPlay();
 
 	FTimerHandle TimerHandle;
-	GetWorldTimerManager().SetTimer(TimerHandle, this, &AFPSGameMode::StartCountdown, 1.f, true, 0.0);
+	//GetWorldTimerManager().SetTimer(TimerHandle, this, &AFPSGameMode::StartCountdown, 1.f, true, 0.0);
 }
 
 void AFPSGameMode::PostLogin(APlayerController* PlayerController)
@@ -37,6 +37,13 @@ void AFPSGameMode::SpawnWeapon()
 	AActor* Weapon = GetWorld()->SpawnActor(WeaponTemplate, &SpawnPoint, &FRotator::ZeroRotator);
 	Weapon->SetReplicates(true);
 	SpawnPoint.X += WeaponOffset;
+}
+
+// Called every frame
+void AFPSGameMode::Tick(float DeltaTime)
+{
+	Super::Tick(DeltaTime);
+
 }
 
 void AFPSGameMode::SpawnTargets()
