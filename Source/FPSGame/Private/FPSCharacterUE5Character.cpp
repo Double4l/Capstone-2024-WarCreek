@@ -13,6 +13,7 @@
 #include "FPSGameMode.h"
 #include "FPSPlayerState.h"
 #include "Kismet/GameplayStatics.h"
+#include "Net/UnrealNetwork.h"
 
 
 //////////////////////////////////////////////////////////////////////////
@@ -99,6 +100,9 @@ void AFPSCharacterUE5Character::BeginPlay()
 		}
 	}
 
+	FTimerHandle DelayHandle;
+	GetWorldTimerManager().SetTimer(DelayHandle, this, &AFPSCharacterUE5Character::SetPlayerColor, 1.0f, false);
+	//SetPlayerColor();
 }
 
 void AFPSCharacterUE5Character::TakeAnyDamage(AActor* DamagedActor, float Damage, const class UDamageType* DamageType, class AController* InstigatedBy, AActor* DamageCauser)
@@ -142,12 +146,12 @@ void AFPSCharacterUE5Character::StopSprint()
 
 void AFPSCharacterUE5Character::SetPlayerColor()
 {
-	
+	//NMC_SetPlayerColor(GetGameState()->PlayerOneMaterial);
 }
 
-void AFPSCharacterUE5Character::NMC_SetTeamColor_Implementation(UMaterialInterface* NewMaterial)
+void AFPSCharacterUE5Character::NMC_SetPlayerColor_Implementation(UMaterialInterface* NewMaterial)
 {
-	GetMesh()->SetMaterial(0, NewMaterial);
+	//GetMesh()->SetMaterial(0, NewMaterial);
 }
 
 

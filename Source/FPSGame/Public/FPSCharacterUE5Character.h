@@ -134,7 +134,7 @@ public:
 
 public:
 	UFUNCTION(NetMulticast, Reliable)
-	void NMC_SetTeamColor(UMaterialInterface* NewMaterial);
+	void NMC_SetPlayerColor(UMaterialInterface* NewMaterial);
 
 
 
