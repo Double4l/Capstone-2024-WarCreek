@@ -5,6 +5,7 @@
 #include "FPSCharacterUE5Character.h"
 #include "UObject/ConstructorHelpers.h"
 #include "EngineUtils.h"
+#include "FPSCharacterUE5Character.h"
 
 AFPSGameMode::AFPSGameMode()
 {
@@ -51,9 +52,14 @@ void AFPSGameMode::SpawnTargets()
 	
 }
 
-void AFPSGameMode::HandleNewPlayer()
+void AFPSGameMode::HandleNewPlayer(APlayerController* NewPlayer)
 {
-
+	AFPSCharacterUE5Character* Player = Cast<AFPSCharacterUE5Character>(NewPlayer->GetPawn());
+	if (Player)
+	{
+		GEngine->AddOnScreenDebugMessage(-1, 10, FColor::Green, "Character Logged In");
+		//Player->Server_AssignTeams();
+	}
 }
 void AFPSGameMode::RespawnPlayers()
 {

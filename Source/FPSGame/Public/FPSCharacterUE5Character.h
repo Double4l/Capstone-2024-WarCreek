@@ -104,6 +104,9 @@ protected:
 	UFUNCTION(Server, Reliable)
 	void Server_ThrowBomb();
 
+	UFUNCTION(Server, Reliable)
+	void Server_AssignTeams();
+
 	AActor* RayCastGetActor();
 
 	void SetupRay(FVector& StartTrace, FVector& Direction, FVector& EndTrace);

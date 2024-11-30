@@ -19,6 +19,9 @@ public:
 	int PlayerScore;
 
 	UPROPERTY(EditAnywhere, Replicated)
+	int PlayerTeam;
+
+	UPROPERTY(EditAnywhere, Replicated)
 	int PlayerHighestScore;
 
 

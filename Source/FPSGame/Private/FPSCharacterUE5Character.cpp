@@ -84,6 +84,31 @@ void AFPSCharacterUE5Character::Tick(float dt)
 		}
 	}
 }
+void AFPSCharacterUE5Character::Server_AssignTeams_Implementation()
+{
+	if (HasAuthority())
+	{
+		if (GetGameState())
+
+		{
+			if (GetCharacterPlayerState())
+			{
+				if (GetGameState()->PlayerOneLoggedIn == false)
+				{
+					GetCharacterPlayerState()->PlayerTeam = 1;
+					GetGameState()->PlayerOneLoggedIn = true;
+				}
+				else if (GetGameState()->PlayerTwoLoggedIn == false)
+				{
+					GetCharacterPlayerState()->PlayerTeam = 2;
+					GetGameState()->PlayerTwoLoggedIn = true;
+				}
+			}
+		}
+	}
+}
+
+
 
 void AFPSCharacterUE5Character::BeginPlay()
 {

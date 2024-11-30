@@ -3,6 +3,8 @@
 
 #include "CoinActor.h"
 #include "FPSCharacterUE5Character.h"
+#include "FPSGameStateBase.h"
+#include "FPSPlayerState.h"
 
 // Sets default values
 ACoinActor::ACoinActor()
@@ -35,11 +37,11 @@ void ACoinActor::Tick(float DeltaTime)
 }
 void ACoinActor::OnOverlapBegin(AActor* OverlappedActor, AActor* OtherActor)
 {
-	AFPSCharacterUE5Character* Character = Cast<AFPSCharacterUE5Character>(OtherActor);
+	AFPSCharacterUE5Character* Player = Cast<AFPSCharacterUE5Character>(OtherActor);
 	ACoinActor* Pickup = Cast<ACoinActor>(OverlappedActor);
 
 	// Checks If Character exist
-	if (Character != nullptr)
+	if (Player != nullptr)
 	{
 		// Checks If Pickup exist
 		if (Pickup != nullptr) 
@@ -50,8 +52,16 @@ void ACoinActor::OnOverlapBegin(AActor* OverlappedActor, AActor* OtherActor)
 			if (World != nullptr) 
 			{
 				// destroy actor
-				
-				Destroy();
+
+				AFPSGameStateBase *GS = Player->GetGameState();
+				if (GS) 
+				{
+					AFPSPlayerState *PlayerState = Player->GetCharacterPlayerState();
+					if (PlayerState) 
+					{
+						Destroy();
+					}
+				}
 			}
 		}
 	}
