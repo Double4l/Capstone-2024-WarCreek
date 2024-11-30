@@ -44,12 +44,11 @@ void ATargetSpawner::Server_SpawnTargets_Implementation()
 
 	for (int i = 0; i < SpawnPoints.Num(); i++) {
 		//AActor Target = PickupTypes[1];
-
 		Server_Spawn(SpawnPoints[i]);
 	}
 
-	//AFPSGameStateBase* GameState = Cast<AFPSGameStateBase>(GetWorld()->GetGameState());
-	//GameState->TargetsLeft = SpawnPoints.Num();
+	AFPSGameStateBase* GameState = Cast<AFPSGameStateBase>(GetWorld()->GetGameState());
+	GameState->TargetsLeft = SpawnPoints.Num();
 }
 
 // Called every frame

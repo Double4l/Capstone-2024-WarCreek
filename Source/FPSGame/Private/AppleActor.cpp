@@ -7,6 +7,7 @@
 #include "Components/SphereComponent.h"
 #include "kismet/GameplayStatics.h"
 #include "Engine/Engine.h"
+#include "FPSGameStateBase.h"
 
 // Sets default values
 AAppleActor::AAppleActor()
@@ -80,6 +81,8 @@ void AAppleActor::NMC_Explode_Implementation()
 // Called when the game starts or when spawned
 void AAppleActor::DestroyApple()
 {
+	AFPSGameStateBase* GameState = Cast<AFPSGameStateBase>(GetWorld()->GetGameState());
+	GameState->TargetsLeft -= 1;
 	Destroy();
 }
 

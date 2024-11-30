@@ -57,7 +57,6 @@ AFPSCharacterUE5Character::AFPSCharacterUE5Character()
 	SetReplicates(true);
 	SetReplicateMovement(true);
 
-
 	GetCharacterMovement()->MaxWalkSpeed = 500.f;
 }
 
@@ -139,16 +138,16 @@ void AFPSCharacterUE5Character::StartSprint()
 {
 	UWorld* World = GetWorld();
 
-	AFPSGameStateBase* GS = Cast<AFPSGameStateBase>(World->GetGameState());
-	GS->TargetsLeft = 100;
+	//AFPSGameStateBase* GS = Cast<AFPSGameStateBase>(World->GetGameState());
+	//GS->TargetsLeft = 100;
 
-	AFPSGameMode* GM = GetGameMode();
-	GM->Amount = 10;
+	//AFPSGameMode* GM = GetGameMode();
+	//GM->Amount = 10;
 
-	AFPSPlayerState* PS = GetCharacterPlayerState();
-	PS->PlayerScore = 100;
+	//AFPSPlayerState* PS = GetCharacterPlayerState();
+	//PS->PlayerScore = 100;
 
-	GS->TargetsLeft = 100;
+	//GS->TargetsLeft = 100;
 	GetCharacterMovement()->MaxWalkSpeed = 1000.f;
 }
 

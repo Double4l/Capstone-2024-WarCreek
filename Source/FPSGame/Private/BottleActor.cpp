@@ -8,6 +8,7 @@
 #include "kismet/GameplayStatics.h"
 #include "Engine/Engine.h"
 #include "TargetSpawner.h"
+#include "FPSGameStateBase.h"
 
 // Sets default values
 ABottleActor::ABottleActor()
@@ -93,9 +94,11 @@ void ABottleActor::NMC_Explode_Implementation()
 	DestroyBottle();
 }
 
-// Called when the game starts or when spawned
 void ABottleActor::DestroyBottle()
 {
+
+	AFPSGameStateBase* GameState = Cast<AFPSGameStateBase>(GetWorld()->GetGameState());
+	GameState->TargetsLeft -= 1;
 	Destroy();
 }
 

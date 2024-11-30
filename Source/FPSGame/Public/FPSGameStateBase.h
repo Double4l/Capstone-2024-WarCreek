@@ -18,7 +18,7 @@ public:
     AFPSGameStateBase();
 
     UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = Gameplay, meta = (ClampMin = 0), Replicated)
-    int PlayerOneScore;
+    int PlayerOneScore = 10;
 
     UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = Gameplay, meta = (ClampMin = 0), Replicated)
     int PlayerTwoScore;
@@ -30,7 +30,7 @@ public:
     UPROPERTY(EditAnywhere, Replicated)
     bool PlayerTwoLoggedIn;
 
-    UPROPERTY(EditAnywhere)
+    UPROPERTY(BlueprintReadWrite, Replicated)
     int TargetsLeft;
 
     UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = Materials)

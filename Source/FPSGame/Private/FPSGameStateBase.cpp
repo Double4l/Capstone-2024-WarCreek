@@ -24,5 +24,6 @@ void AFPSGameStateBase::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& Ou
     DOREPLIFETIME(AFPSGameStateBase, PlayerTwoLoggedIn);
     DOREPLIFETIME(AFPSGameStateBase, PlayerOneScore); // sus
     DOREPLIFETIME(AFPSGameStateBase, PlayerTwoScore); // sus
+    DOREPLIFETIME(AFPSGameStateBase, TargetsLeft); // sus
 }
 
