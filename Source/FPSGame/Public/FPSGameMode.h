@@ -28,6 +28,9 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
+public:
+	int Amount;
+
 	protected:
 		virtual void BeginPlay() override;
 		virtual void PostLogin(APlayerController* PlayerController);

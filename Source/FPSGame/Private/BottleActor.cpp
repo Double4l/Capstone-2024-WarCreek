@@ -7,6 +7,7 @@
 #include "Components/CapsuleComponent.h"
 #include "kismet/GameplayStatics.h"
 #include "Engine/Engine.h"
+#include "TargetSpawner.h"
 
 // Sets default values
 ABottleActor::ABottleActor()
@@ -65,11 +66,16 @@ void ABottleActor::BeginPlay()
 		OnActorBeginOverlap.AddDynamic(this, &ABottleActor::OnOverlapBegin);
 	}
 }
-
+	
 void ABottleActor::OnOverlapBegin(AActor* OverlappedActor, AActor* OtherActor)
 {
 
 }
+
+//ATargetSpawner* ABottleActor::GetTargetSpawner()
+//{
+	
+//}
 
 void ABottleActor::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit)
 {

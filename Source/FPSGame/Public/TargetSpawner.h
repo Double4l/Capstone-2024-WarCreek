@@ -24,7 +24,9 @@ public:
 	virtual void Tick(float DeltaTime) override;
 
 public:
-	int NumberOfTargets = 0;
+
+	UPROPERTY(EditAnywhere)
+	int NumberOfTargets;
 
 	UPROPERTY(EditAnywhere, Category = "Spawn Points")
 	TArray<AActor *> SpawnPoints;
@@ -41,4 +43,5 @@ public:
 
 	UFUNCTION(Server, Reliable)
 	void Server_SpawnTargets();
+
 };

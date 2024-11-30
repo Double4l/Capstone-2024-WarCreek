@@ -14,6 +14,7 @@
 #include "FPSPlayerState.h"
 #include "Kismet/GameplayStatics.h"
 #include "Net/UnrealNetwork.h"
+#include "Engine/World.h"
 
 
 //////////////////////////////////////////////////////////////////////////
@@ -82,7 +83,6 @@ void AFPSCharacterUE5Character::Tick(float dt)
 
 			UKismetSystemLibrary::DrawDebugString(this, FVector(0.f, 0.f, -60.f), ":Pawn Class - " + GetName(), this, FLinearColor::Yellow);
 		}
-
 	}
 }
 
@@ -100,8 +100,9 @@ void AFPSCharacterUE5Character::BeginPlay()
 		}
 	}
 
-	FTimerHandle DelayHandle;
-	GetWorldTimerManager().SetTimer(DelayHandle, this, &AFPSCharacterUE5Character::SetPlayerColor, 1.0f, false);
+	//FTimerHandle DelayHandle;
+	//GetWorldTimerManager().SetTimer(DelayHandle, this, &AFPSCharacterUE5Character::SetPlayerColor, 1.0f, false);
+
 	//SetPlayerColor();
 }
 
@@ -136,6 +137,18 @@ AFPSGameStateBase* AFPSCharacterUE5Character::GetGameState()
 
 void AFPSCharacterUE5Character::StartSprint()
 {
+	UWorld* World = GetWorld();
+
+	AFPSGameStateBase* GS = Cast<AFPSGameStateBase>(World->GetGameState());
+	GS->TargetsLeft = 100;
+
+	AFPSGameMode* GM = GetGameMode();
+	GM->Amount = 10;
+
+	AFPSPlayerState* PS = GetCharacterPlayerState();
+	PS->PlayerScore = 100;
+
+	GS->TargetsLeft = 100;
 	GetCharacterMovement()->MaxWalkSpeed = 1000.f;
 }
 

@@ -4,6 +4,7 @@
 #include "TargetSpawner.h"
 #include "BottleActor.h"
 #include <iostream>
+#include "FPSGameStateBase.h"
 
 // Sets default values
 ATargetSpawner::ATargetSpawner()
@@ -17,15 +18,6 @@ void ATargetSpawner::BeginPlay()
 {
 	Super::BeginPlay();
 	Server_SpawnTargets();
-
-	//int n = sizeof(SpawnPoints) / sizeof(SpawnPoints[0]);
-	//std::cout << "Hellooooooooooooooooooooooooooooooooooooooooooooooooooooooooo" + n << std::endl;
-
-	//for (int i = 0; i < SpawnPoints.Num(); i++) {
-	//	SpawnPoints[i]->Destroy();
-	//}
-
-	
 }
 
 // Spawn implementation
@@ -55,6 +47,9 @@ void ATargetSpawner::Server_SpawnTargets_Implementation()
 
 		Server_Spawn(SpawnPoints[i]);
 	}
+
+	//AFPSGameStateBase* GameState = Cast<AFPSGameStateBase>(GetWorld()->GetGameState());
+	//GameState->TargetsLeft = SpawnPoints.Num();
 }
 
 // Called every frame
@@ -64,3 +59,11 @@ void ATargetSpawner::Tick(float DeltaTime)
 
 }
 
+
+
+//int n = sizeof(SpawnPoints) / sizeof(SpawnPoints[0]);
+	//std::cout << "Hellooooooooooooooooooooooooooooooooooooooooooooooooooooooooo" + n << std::endl;
+
+	//for (int i = 0; i < SpawnPoints.Num(); i++) {
+	//	SpawnPoints[i]->Destroy();
+	//}

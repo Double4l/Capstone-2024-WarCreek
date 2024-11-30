@@ -30,7 +30,7 @@ public:
     UPROPERTY(EditAnywhere, Replicated)
     bool PlayerTwoLoggedIn;
 
-    UPROPERTY(EditAnywhere, Replicated)
+    UPROPERTY(EditAnywhere)
     int TargetsLeft;
 
     UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = Materials)

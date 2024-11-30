@@ -49,4 +49,6 @@ public:
 		FVector NormalImpulse,
 		const FHitResult& Hit);
 
+public:
+	class ATargetSpawner* GetTargetSpawner();
 };
