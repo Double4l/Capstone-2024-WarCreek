@@ -50,5 +50,9 @@ public:
 
 	UFUNCTION(NetMulticast, Reliable)
 	void NMC_SetRandomColor(UPrimitiveComponent* OtherComp, FLinearColor color);
+
+public:
+	UPROPERTY(EditAnywhere)
+	AFPSCharacterUE5Character* CharacterFired;
 };
 

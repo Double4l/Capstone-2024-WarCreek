@@ -59,6 +59,7 @@ void ACoinActor::OnOverlapBegin(AActor* OverlappedActor, AActor* OtherActor)
 					AFPSPlayerState *PlayerState = Player->GetCharacterPlayerState();
 					if (PlayerState) 
 					{
+						PlayerState->PlayerScore += 1;
 						Destroy();
 					}
 				}

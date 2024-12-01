@@ -65,7 +65,7 @@ void AFPSGameMode::HandleNewPlayer(APlayerController* NewPlayer)
 	if (Player)
 	{
 		GEngine->AddOnScreenDebugMessage(-1, 10, FColor::Green, "Character Logged In");
-		//Player->Server_AssignTeams();
+		Player->Server_AssignTeams();
 	}
 }
 void AFPSGameMode::RespawnPlayers()

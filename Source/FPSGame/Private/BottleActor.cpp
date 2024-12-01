@@ -9,6 +9,9 @@
 #include "Engine/Engine.h"
 #include "TargetSpawner.h"
 #include "FPSGameStateBase.h"
+#include "FPSProjectile.h"
+#include "FPSCharacterUE5Character.h"
+#include "FPSPlayerState.h"
 
 // Sets default values
 ABottleActor::ABottleActor()
@@ -80,17 +83,46 @@ void ABottleActor::OnOverlapBegin(AActor* OverlappedActor, AActor* OtherActor)
 
 void ABottleActor::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit)
 {
-	//SPAWN the ExplosionTemplate using UGameplayStatics::SpawnEmitterAtLocation(....)
-	UGameplayStatics::SpawnEmitterAtLocation(this, ExplosionTemplate, GetActorLocation());
+	AFPSProjectile* Projectile = Cast<AFPSProjectile>(OtherActor);
+	// Checks If Character exist
 
-	// Blast away nearby physics actors by Calling FireImpulse() on the Radial Force Component
-	RadialForceComp->FireImpulse();
+	if (Projectile != nullptr)
+	{
+		UWorld* World = GetWorld();
+		// Checks If World Exist
 
-	NMC_Explode();
+		if (World != nullptr)
+		{
+			// destroy actor
+
+			AFPSCharacterUE5Character* Player = Projectile->CharacterFired;
+			if (Player)
+			{
+				AFPSGameStateBase* GS = Player->GetGameState();
+
+				if (GS)
+				{
+					AFPSPlayerState* PlayerState = Player->GetCharacterPlayerState();
+					if (PlayerState)
+					{
+						PlayerState->PlayerScore += 5;
+						NMC_Explode();
+					}
+				}
+			}
+		}
+	}
 }
 
 void ABottleActor::NMC_Explode_Implementation()
 {
+	//SPAWN the ExplosionTemplate using UGameplayStatics::SpawnEmitterAtLocation(....)
+	UGameplayStatics::SpawnEmitterAtLocation(this, ExplosionTemplate, GetActorLocation());
+
+
+	// Blast away nearby physics actors by Calling FireImpulse() on the Radial Force Component
+	RadialForceComp->FireImpulse();
+
 	DestroyBottle();
 }
 

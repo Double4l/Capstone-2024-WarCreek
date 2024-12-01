@@ -8,6 +8,9 @@
 #include "kismet/GameplayStatics.h"
 #include "Engine/Engine.h"
 #include "FPSGameStateBase.h"
+#include "FPSCharacterUE5Character.h"
+#include "FPSPlayerState.h"
+#include "FPSProjectile.h"
 
 // Sets default values
 AAppleActor::AAppleActor()
@@ -62,7 +65,35 @@ void AAppleActor::BeginPlay()
 void AAppleActor::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit)
 {
 
-	NMC_Explode();
+	AFPSProjectile* Projectile = Cast<AFPSProjectile>(OtherActor);
+	// Checks If Character exist
+
+	if (Projectile != nullptr)
+	{
+		UWorld* World = GetWorld();
+		// Checks If World Exist
+
+		if (World != nullptr)
+		{
+			// destroy actor
+
+			AFPSCharacterUE5Character* Player = Projectile->CharacterFired;
+			if (Player) 
+			{
+				AFPSGameStateBase* GS = Player->GetGameState();
+
+				if (GS)
+				{
+					AFPSPlayerState* PlayerState = Player->GetCharacterPlayerState();
+					if (PlayerState)
+					{
+						PlayerState->PlayerScore += 5;
+						NMC_Explode();
+					}
+				}
+			}
+		}
+	}
 }
 
 void AAppleActor::NMC_Explode_Implementation() 

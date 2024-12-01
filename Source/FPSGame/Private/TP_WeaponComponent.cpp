@@ -32,11 +32,12 @@ void UTP_WeaponComponent::Server_Fire_Implementation()
 		if (World != nullptr)
 		{
 			APlayerController* PlayerController = Cast<APlayerController>(Character->GetController());
-			AFPSCharacterUE5Character* ThirdPersonCharacter = Cast<AFPSCharacterUE5Character>(PlayerController->GetPawn());
+			AFPSCharacterUE5Character* Player = Cast<AFPSCharacterUE5Character>(PlayerController->GetPawn());
+
 			bool IsAbleToFire = true;
-			if (ThirdPersonCharacter != nullptr)
+			if (Player != nullptr)
 			{
-				IsAbleToFire = ThirdPersonCharacter->GetIsAbleToFire();
+				IsAbleToFire = Character->GetIsAbleToFire();
 			}
 			
 			if (IsAbleToFire)
@@ -50,7 +51,8 @@ void UTP_WeaponComponent::Server_Fire_Implementation()
 				ActorSpawnParams.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AdjustIfPossibleButDontSpawnIfColliding;
 
 				// Spawn the projectile at the muzzle
-				World->SpawnActor<AFPSProjectile>(ProjectileClass, SpawnLocation, SpawnRotation, ActorSpawnParams);
+				AFPSProjectile *projectile = World->SpawnActor<AFPSProjectile>(ProjectileClass, SpawnLocation, SpawnRotation, ActorSpawnParams);
+				projectile->CharacterFired = Player;
 
 				NMC_PlaySound();
 				NMC_PlayAnimation();
