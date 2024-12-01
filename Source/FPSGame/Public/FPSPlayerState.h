@@ -15,13 +15,13 @@ class FPSGAME_API AFPSPlayerState : public APlayerState
 	GENERATED_BODY()
 
 public:
-	UPROPERTY(EditAnywhere, Replicated)
+	UPROPERTY(BlueprintReadWrite, Replicated)
 	int PlayerScore;
 
 	UPROPERTY(EditAnywhere, Replicated)
 	int PlayerTeam;
 
-	UPROPERTY(EditAnywhere, Replicated)
+	UPROPERTY(BlueprintReadWrite, Replicated)
 	int PlayerHighestScore;
 
 
