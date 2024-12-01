@@ -52,6 +52,13 @@ void AFPSGameMode::SpawnTargets()
 	
 }
 
+void AFPSGameMode::HandleStartingNewPlayer_Implementation(APlayerController* NewPlayer)
+{
+	Super::HandleStartingNewPlayer_Implementation(NewPlayer);
+	HandleNewPlayer(NewPlayer);
+}
+
+
 void AFPSGameMode::HandleNewPlayer(APlayerController* NewPlayer)
 {
 	AFPSCharacterUE5Character* Player = Cast<AFPSCharacterUE5Character>(NewPlayer->GetPawn());

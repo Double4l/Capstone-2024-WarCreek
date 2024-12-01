@@ -35,6 +35,7 @@ public:
 		virtual void BeginPlay() override;
 		virtual void PostLogin(APlayerController* PlayerController);
 
+		virtual void HandleStartingNewPlayer_Implementation(APlayerController* NewPlayer) override;
 		void HandleNewPlayer(APlayerController* NewPlayer);
 
 		void SpawnWeapon();
