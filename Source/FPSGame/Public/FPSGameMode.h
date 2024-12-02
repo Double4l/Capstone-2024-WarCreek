@@ -18,10 +18,10 @@ public:
 		TSubclassOf<AActor> WeaponTemplate;
 
 	UPROPERTY(BlueprintReadOnly)
-		int Minutes = 10;
+		int Minutes = 2;
 
 	UPROPERTY(BlueprintReadOnly)
-		int Seconds = 5;
+		int Seconds = 0;
 
 	void StartCountdown();
 
