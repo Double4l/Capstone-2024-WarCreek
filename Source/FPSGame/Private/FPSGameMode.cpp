@@ -6,6 +6,7 @@
 #include "UObject/ConstructorHelpers.h"
 #include "EngineUtils.h"
 #include "FPSCharacterUE5Character.h"
+#include "TargetSpawner.h"
 
 AFPSGameMode::AFPSGameMode()
 {
@@ -21,7 +22,15 @@ AFPSGameMode::AFPSGameMode()
 void AFPSGameMode::BeginPlay()
 {
 	Super::BeginPlay();
+	StartGame();
 
+	//ATargetSpawner* TargetSpawner = FindOb
+	//ATargetSpawner* TargetSpawner = FindObject<ATargetSpawner>(GetWorld()->GetCurrentLevel(), TEXT("BP_TargetSpawner"));
+	//TargetSpawner->Server_SpawnTargets();
+}
+
+void AFPSGameMode::StartGame() 
+{
 	FTimerHandle TimerHandle;
 	GetWorldTimerManager().SetTimer(TimerHandle, this, &AFPSGameMode::StartCountdown, 1.f, true, 0.0);
 }
@@ -83,6 +92,7 @@ void AFPSGameMode::StartCountdown()
 	{
 		if (Minutes == 0) 
 		{
+			// Call Respawn Players Method
 			// Do some stuff when timer has finished
 		}
 		else

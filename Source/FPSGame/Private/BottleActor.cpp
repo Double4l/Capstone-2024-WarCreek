@@ -130,7 +130,8 @@ void ABottleActor::DestroyBottle()
 {
 
 	AFPSGameStateBase* GameState = Cast<AFPSGameStateBase>(GetWorld()->GetGameState());
-	GameState->TargetsLeft -= 1;
+	//GameState->TargetsLeft -= 1;
+	GameState->UpdateTarget();
 	Destroy();
 }
 

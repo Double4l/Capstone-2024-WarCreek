@@ -17,7 +17,7 @@ ATargetSpawner::ATargetSpawner()
 void ATargetSpawner::BeginPlay()
 {
 	Super::BeginPlay();
-	Server_SpawnTargets();
+	//Server_SpawnTargets();
 }
 
 // Spawn implementation

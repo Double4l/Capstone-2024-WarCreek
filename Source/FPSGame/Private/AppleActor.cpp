@@ -112,7 +112,8 @@ void AAppleActor::NMC_Explode_Implementation()
 void AAppleActor::DestroyApple()
 {
 	AFPSGameStateBase* GameState = Cast<AFPSGameStateBase>(GetWorld()->GetGameState());
-	GameState->TargetsLeft -= 1;
+	//GameState->TargetsLeft -= 1;
+	GameState->UpdateTarget();
 	Destroy();
 }
 

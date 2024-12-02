@@ -42,6 +42,7 @@ public:
 		void SpawnTargets();
 		void HandleNewPlayer();
 		void RespawnPlayers();
+		void StartGame();
 
 		FVector SpawnPoint;
 

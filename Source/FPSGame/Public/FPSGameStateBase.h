@@ -17,11 +17,11 @@ class FPSGAME_API AFPSGameStateBase : public AGameStateBase
 public:
     AFPSGameStateBase();
 
-    UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = Gameplay, meta = (ClampMin = 0), Replicated)
-    int PlayerOneScore = 10;
+    //UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = Gameplay, meta = (ClampMin = 0), Replicated)
+   // int PlayerOneScore = 10;
 
-    UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = Gameplay, meta = (ClampMin = 0), Replicated)
-    int PlayerTwoScore;
+    //UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = Gameplay, meta = (ClampMin = 0), Replicated)
+    //int PlayerTwoScore;
 
 public:
     UPROPERTY(EditAnywhere, Replicated)
@@ -38,6 +38,9 @@ public:
 
     UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = Materials)
     class UMaterialInterface* PlayerTwoMaterial;
+
+public:
+    void UpdateTarget();
 
 
 protected:
