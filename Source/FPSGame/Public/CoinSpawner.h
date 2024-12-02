@@ -31,6 +31,8 @@ public:
 	UFUNCTION(Server, Reliable)
 	void Server_SpawnPickups();
 
+	UFUNCTION(Server, Reliable)
+	void Server_AssignToGameMode();
 
 public:
 	UPROPERTY(EditAnywhere, Category = "Pickup To Spawn")

@@ -7,6 +7,7 @@
 #include "EngineUtils.h"
 #include "FPSCharacterUE5Character.h"
 #include "TargetSpawner.h"
+#include "CoinSpawner.h"
 
 AFPSGameMode::AFPSGameMode()
 {
@@ -32,7 +33,13 @@ void AFPSGameMode::BeginPlay()
 void AFPSGameMode::StartGame() 
 {
 	FTimerHandle TimerHandle;
-	GetWorldTimerManager().SetTimer(TimerHandle, this, &AFPSGameMode::StartCountdown, 1.f, true, 0.0);
+	GetWorldTimerManager().SetTimer(TimerHandle, this, &AFPSGameMode::StartCountdown, 1.f, true, 5.0);
+
+	FTimerHandle SpawnHandle;
+	GetWorldTimerManager().SetTimer(SpawnHandle, this, &AFPSGameMode::SpawnTargets, 1.f, false, 5.0);
+
+	FTimerHandle CoinSpawnHandle;
+	GetWorldTimerManager().SetTimer(CoinSpawnHandle, this, &AFPSGameMode::SpawnCoins, 1.f, false, 5.0);
 }
 
 void AFPSGameMode::PostLogin(APlayerController* PlayerController)
@@ -56,10 +63,18 @@ void AFPSGameMode::Tick(float DeltaTime)
 
 }
 
+void AFPSGameMode::SpawnCoins()
+{
+	//TargetSpawner->Server_SpawnTargets();
+	CoinSpawner->Server_SpawnPickups();
+
+}
 void AFPSGameMode::SpawnTargets()
 {
-	
+	TargetSpawner->Server_SpawnTargets();
 }
+
+// Spawn Coins
 
 void AFPSGameMode::HandleStartingNewPlayer_Implementation(APlayerController* NewPlayer)
 {

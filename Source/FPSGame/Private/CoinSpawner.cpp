@@ -3,6 +3,7 @@
 
 #include "CoinSpawner.h"
 #include "CoinActor.h"
+#include "FPSGameMode.h"
 
 
 // Sets default values
@@ -16,7 +17,7 @@ ACoinSpawner::ACoinSpawner()
 void ACoinSpawner::BeginPlay()
 {
 	Super::BeginPlay();	
-	Server_SpawnPickups();
+	Server_AssignToGameMode();
 }
 
 // Called every frame
@@ -24,6 +25,13 @@ void ACoinSpawner::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 }
+
+void ACoinSpawner::Server_AssignToGameMode_Implementation()
+{
+	AFPSGameMode* GameMode = Cast<AFPSGameMode>(GetWorld()->GetAuthGameMode());
+	GameMode->CoinSpawner = this;
+}
+
 
 // Spawn implementation
 void ACoinSpawner::Server_Spawn_Implementation()

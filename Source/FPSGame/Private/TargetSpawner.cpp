@@ -5,6 +5,7 @@
 #include "BottleActor.h"
 #include <iostream>
 #include "FPSGameStateBase.h"
+#include "FPSGameMode.h"
 
 // Sets default values
 ATargetSpawner::ATargetSpawner()
@@ -17,7 +18,7 @@ ATargetSpawner::ATargetSpawner()
 void ATargetSpawner::BeginPlay()
 {
 	Super::BeginPlay();
-	//Server_SpawnTargets();
+	Server_AssignToGameState();
 }
 
 // Spawn implementation
@@ -37,6 +38,12 @@ void ATargetSpawner::Server_Spawn_Implementation(AActor *SpawnPoint)
 		int position = FMath::RandRange(0, PickupTypes.Num() - 1);
 		World->SpawnActor<AActor>(PickupTypes[position], SpawnPosition, SpawnRotation, ActorSpawnParams);
 	}
+}
+
+void ATargetSpawner::Server_AssignToGameState_Implementation()
+{
+	AFPSGameMode* GameMode = Cast<AFPSGameMode>(GetWorld()->GetAuthGameMode());
+	GameMode->TargetSpawner = this;
 }
 
 void ATargetSpawner::Server_SpawnTargets_Implementation()

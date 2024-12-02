@@ -29,6 +29,11 @@ public:
 	virtual void Tick(float DeltaTime) override;
 
 public:
+	ATargetSpawner* TargetSpawner;
+	ACoinSpawner* CoinSpawner;
+	
+
+public:
 	int Amount;
 
 	protected:
@@ -40,6 +45,7 @@ public:
 
 		void SpawnWeapon();
 		void SpawnTargets();
+		void SpawnCoins();
 		void HandleNewPlayer();
 		void RespawnPlayers();
 		void StartGame();

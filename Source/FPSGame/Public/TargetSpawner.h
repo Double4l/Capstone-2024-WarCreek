@@ -42,6 +42,9 @@ public:
 	void Server_Spawn(AActor *SpawnPoint);
 
 	UFUNCTION(Server, Reliable)
+	void Server_AssignToGameState();
+
+	UFUNCTION(Server, Reliable)
 	void Server_SpawnTargets();
 
 };
