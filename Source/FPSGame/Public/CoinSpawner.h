@@ -49,4 +49,7 @@ public:
 	UPROPERTY(EditAnywhere, Category = "Max Pickups")
 	int MaxPickups;
 
+	UPROPERTY() // EditAnywhere, Category = "Coins"
+	TArray <ACoinActor *> Coins;
+
 };

@@ -22,25 +22,46 @@ AFPSGameMode::AFPSGameMode()
 
 void AFPSGameMode::BeginPlay()
 {
+	FTimerHandle TimerHandle;
+	GetWorldTimerManager().SetTimer(TimerHandle, this, &AFPSGameMode::StartCountdown, 1.f, true, 5.0);
+
 	Super::BeginPlay();
 	StartGame();
 
 	//ATargetSpawner* TargetSpawner = FindOb
 	//ATargetSpawner* TargetSpawner = FindObject<ATargetSpawner>(GetWorld()->GetCurrentLevel(), TEXT("BP_TargetSpawner"));
 	//TargetSpawner->Server_SpawnTargets();
+
 }
 
 void AFPSGameMode::StartGame() 
 {
-	FTimerHandle TimerHandle;
-	GetWorldTimerManager().SetTimer(TimerHandle, this, &AFPSGameMode::StartCountdown, 1.f, true, 5.0);
-
 	FTimerHandle SpawnHandle;
 	GetWorldTimerManager().SetTimer(SpawnHandle, this, &AFPSGameMode::SpawnTargets, 1.f, false, 5.0);
 
 	FTimerHandle CoinSpawnHandle;
 	GetWorldTimerManager().SetTimer(CoinSpawnHandle, this, &AFPSGameMode::SpawnCoins, 1.f, false, 5.0);
+
+	Minutes = 1;
+	Seconds = 0;
 }
+void AFPSGameMode::StopGame()
+{
+	// Call Respawn Players Method
+	// Do some stuff when timer has finished
+	for (int i = 0; i < CoinSpawner->Coins.Num(); i++) 
+	{
+		CoinSpawner->Coins[i]->DestroyCoin();
+	}
+
+	for (int i = 0; i < TargetSpawner->Bottles.Num(); i++) {
+		//TargetSpawner->Targets[i]->DestroyActor();
+		//TargetSpawner->Bottles[i]->DestroyActor();
+	}
+	GameStarted = false;
+	StartGame();
+}
+
 
 void AFPSGameMode::PostLogin(APlayerController* PlayerController)
 {
@@ -65,23 +86,20 @@ void AFPSGameMode::Tick(float DeltaTime)
 
 void AFPSGameMode::SpawnCoins()
 {
-	//TargetSpawner->Server_SpawnTargets();
 	CoinSpawner->Server_SpawnPickups();
 
 }
 void AFPSGameMode::SpawnTargets()
 {
+	GameStarted = true;
 	TargetSpawner->Server_SpawnTargets();
 }
-
-// Spawn Coins
 
 void AFPSGameMode::HandleStartingNewPlayer_Implementation(APlayerController* NewPlayer)
 {
 	Super::HandleStartingNewPlayer_Implementation(NewPlayer);
 	HandleNewPlayer(NewPlayer);
 }
-
 
 void AFPSGameMode::HandleNewPlayer(APlayerController* NewPlayer)
 {
@@ -99,21 +117,22 @@ void AFPSGameMode::RespawnPlayers()
 
 void AFPSGameMode::StartCountdown()
 {
-	if (Seconds != 0) 
-	{
-		Seconds = Seconds - 1;
-	}
-	else 
-	{
-		if (Minutes == 0) 
+	if (GameStarted) {
+		if (Seconds != 0)
 		{
-			// Call Respawn Players Method
-			// Do some stuff when timer has finished
+			Seconds = Seconds - 1;
 		}
 		else
 		{
-			Minutes = Minutes - 1;
-			Seconds = 59;
+			if (Minutes == 0)
+			{
+				StopGame();
+			}
+			else
+			{
+				Minutes = Minutes - 1;
+				Seconds = 59;
+			}
 		}
 	}
 }

@@ -123,10 +123,10 @@ void ABottleActor::NMC_Explode_Implementation()
 	// Blast away nearby physics actors by Calling FireImpulse() on the Radial Force Component
 	RadialForceComp->FireImpulse();
 
-	DestroyBottle();
+	DestroyActor();
 }
 
-void ABottleActor::DestroyBottle()
+void ABottleActor::DestroyActor()
 {
 
 	AFPSGameStateBase* GameState = Cast<AFPSGameStateBase>(GetWorld()->GetGameState());

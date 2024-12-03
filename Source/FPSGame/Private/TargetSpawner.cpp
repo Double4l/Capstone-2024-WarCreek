@@ -6,6 +6,8 @@
 #include <iostream>
 #include "FPSGameStateBase.h"
 #include "FPSGameMode.h"
+#include "BottleActor.h"
+#include "AppleActor.h"
 
 // Sets default values
 ATargetSpawner::ATargetSpawner()
@@ -36,7 +38,9 @@ void ATargetSpawner::Server_Spawn_Implementation(AActor *SpawnPoint)
 		//World->Spawn
 
 		int position = FMath::RandRange(0, PickupTypes.Num() - 1);
-		World->SpawnActor<AActor>(PickupTypes[position], SpawnPosition, SpawnRotation, ActorSpawnParams);
+		AActor* SpawnActor = World->SpawnActor<AActor>(PickupTypes[position], SpawnPosition, SpawnRotation, ActorSpawnParams);
+
+		//Targets.Add(SpawnActor);
 	}
 }
 

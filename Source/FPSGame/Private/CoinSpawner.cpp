@@ -48,7 +48,8 @@ void ACoinSpawner::Server_Spawn_Implementation()
 		FActorSpawnParameters ActorSpawnParams;
 		ActorSpawnParams.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AdjustIfPossibleButDontSpawnIfColliding;
 
-		World->SpawnActor<ACoinActor>(PickupToSpawn, SpawnPosition, SpawnRotation, ActorSpawnParams);
+		ACoinActor *CoinActor = World->SpawnActor<ACoinActor>(PickupToSpawn, SpawnPosition, SpawnRotation, ActorSpawnParams);
+		Coins.Add(CoinActor);
 	}
 }
 

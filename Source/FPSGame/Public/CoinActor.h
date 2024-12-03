@@ -22,9 +22,14 @@ protected:
 	UFUNCTION()
 	void OnOverlapBegin(AActor* OverlappedActor, AActor* OtherActor);
 
+	//virtual void Destroy();
+
 
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
+
+public:
+	void DestroyCoin();
 
 };

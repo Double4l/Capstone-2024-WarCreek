@@ -31,6 +31,12 @@ public:
 	UPROPERTY(EditAnywhere, Category = "Spawn Points")
 	TArray<AActor *> SpawnPoints;
 
+	//UPROPERTY(EditAnywhere, Category = "Targets")
+	//TArray<AAple
+
+	//TArray <AApleActor* > Apples;
+	TArray <ABottleActor* > Bottles;
+
 public:
 	UPROPERTY(EditAnywhere, Category = "Pickup To Spawn")
 	TSubclassOf<class AActor> PickupToSpawn;

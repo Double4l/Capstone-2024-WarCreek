@@ -35,6 +35,11 @@ void ACoinActor::Tick(float DeltaTime)
 	Super::Tick(DeltaTime);
 
 }
+void ACoinActor::DestroyCoin()
+{
+	//Destroy();
+}
+
 void ACoinActor::OnOverlapBegin(AActor* OverlappedActor, AActor* OtherActor)
 {
 	AFPSCharacterUE5Character* Player = Cast<AFPSCharacterUE5Character>(OtherActor);

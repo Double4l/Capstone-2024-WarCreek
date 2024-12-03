@@ -18,7 +18,7 @@ public:
 		TSubclassOf<AActor> WeaponTemplate;
 
 	UPROPERTY(BlueprintReadOnly)
-		int Minutes = 2;
+		int Minutes = 1;
 
 	UPROPERTY(BlueprintReadOnly)
 		int Seconds = 0;
@@ -31,6 +31,9 @@ public:
 public:
 	ATargetSpawner* TargetSpawner;
 	ACoinSpawner* CoinSpawner;
+
+public:
+	bool GameStarted = false;
 	
 
 public:
@@ -49,6 +52,7 @@ public:
 		void HandleNewPlayer();
 		void RespawnPlayers();
 		void StartGame();
+		void StopGame();
 
 		FVector SpawnPoint;
 

@@ -30,7 +30,7 @@ protected:
 	virtual void BeginPlay() override;
 
 	UFUNCTION()
-	void DestroyApple();
+	void DestroyActor();
 
 	UFUNCTION(NetMulticast, Reliable)
 	void NMC_Explode();

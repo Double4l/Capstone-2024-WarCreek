@@ -33,7 +33,7 @@ protected:
 	void OnOverlapBegin(AActor* OverlappedActor, AActor* OtherActor);
 
 	UFUNCTION()
-	void DestroyBottle();
+	void DestroyActor();
 
 	UFUNCTION(NetMulticast, Reliable)
 	void NMC_Explode();

@@ -105,11 +105,11 @@ void AAppleActor::NMC_Explode_Implementation()
 	// Blast away nearby physics actors by Calling FireImpulse() on the Radial Force Component
 	RadialForceComp->FireImpulse();
 
-	DestroyApple();
+	DestroyActor();
 }
 
 // Called when the game starts or when spawned
-void AAppleActor::DestroyApple()
+void AAppleActor::DestroyActor()
 {
 	AFPSGameStateBase* GameState = Cast<AFPSGameStateBase>(GetWorld()->GetGameState());
 	//GameState->TargetsLeft -= 1;
