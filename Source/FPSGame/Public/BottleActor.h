@@ -32,9 +32,6 @@ protected:
 	UFUNCTION()
 	void OnOverlapBegin(AActor* OverlappedActor, AActor* OtherActor);
 
-	UFUNCTION()
-	void DestroyActor();
-
 	UFUNCTION(NetMulticast, Reliable)
 	void NMC_Explode();
 
@@ -51,4 +48,8 @@ public:
 
 public:
 	class ATargetSpawner* GetTargetSpawner();
+
+public:
+	UFUNCTION()
+	void DestroyActor();
 };

@@ -29,11 +29,12 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
-	UFUNCTION()
-	void DestroyActor();
-
 	UFUNCTION(NetMulticast, Reliable)
 	void NMC_Explode();
+
+public:
+	UFUNCTION()
+	void DestroyActor();
 
 public:	
 	// Called every frame
