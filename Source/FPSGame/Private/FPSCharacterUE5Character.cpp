@@ -76,12 +76,12 @@ void AFPSCharacterUE5Character::Tick(float dt)
 		UKismetSystemLibrary::DrawDebugString(this, FVector(0.f, 0.f, -10.f), "Score:" + FString::FromInt(GetCharacterPlayerState()->PlayerScore), this, FLinearColor::Green);
 		UKismetSystemLibrary::DrawDebugString(this, FVector(0.f, 0.f, -20.f), "Highest Score: " + FString::FromInt(GetCharacterPlayerState()->PlayerHighestScore), this, FLinearColor::Yellow);
 
-		if (GetLocalRole() == ROLE_AutonomousProxy || GetLocalRole() == ROLE_Authority)
-		{
-			UKismetSystemLibrary::DrawDebugString(this, FVector(0.f, 0.f, -40.f), ":PlayerController - " + GetController()->GetName(), this, FLinearColor::Yellow);
+		//if (GetLocalRole() == ROLE_AutonomousProxy || GetLocalRole() == ROLE_Authority)
+		//{
+			//UKismetSystemLibrary::DrawDebugString(this, FVector(0.f, 0.f, -40.f), ":PlayerController - " + GetController()->GetName(), this, FLinearColor::Yellow);
 
-			UKismetSystemLibrary::DrawDebugString(this, FVector(0.f, 0.f, -60.f), ":Pawn Class - " + GetName(), this, FLinearColor::Yellow);
-		}
+			//UKismetSystemLibrary::DrawDebugString(this, FVector(0.f, 0.f, -60.f), ":Pawn Class - " + GetName(), this, FLinearColor::Yellow);
+		//}
 	}
 }
 void AFPSCharacterUE5Character::Server_AssignTeams_Implementation()
