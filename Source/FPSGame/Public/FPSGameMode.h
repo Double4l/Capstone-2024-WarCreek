@@ -55,7 +55,7 @@ public:
 
 		FVector SpawnPoint;
 public:
-	void RespawnPlayers(APlayerController* NewPlayer, int SpawnIndex);
+	void RespawnPlayers(); // APlayerController* NewPlayer, int SpawnIndex
 };
 
 

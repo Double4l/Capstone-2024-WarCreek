@@ -14,6 +14,7 @@
 #include "BottleActor.h"
 #include "FPSGameStateBase.h"
 #include "GameFramework/PlayerStart.h"
+#include "FPSPlayerState.h"
 
 AFPSGameMode::AFPSGameMode()
 {
@@ -131,12 +132,20 @@ void AFPSGameMode::HandleNewPlayer(APlayerController* NewPlayer)
 	}
 }
 
-void AFPSGameMode::RespawnPlayers(APlayerController* NewPlayer, int SpawnIndex)
+void AFPSGameMode::RespawnPlayers() // APlayerController* NewPlayer, int SpawnIndex
 {
+	
+	AFPSGameStateBase* GameState = Cast<AFPSGameStateBase>(GetWorld()->GetGameState());
+
+	//for (int i = 0; i < GameState->PlayerArray.Num(); i++) {
+		
+	//}
+
+	APlayerController* NewPlayer = Cast<APlayerController>(GameState->PlayerArray[0]->GetOwner());
 	TArray<AActor*> PlayerStarts;
 	UGameplayStatics::GetAllActorsOfClass(GetWorld(), APlayerStart::StaticClass(), PlayerStarts);
 
-	APawn* Pawn = SpawnDefaultPawnFor(NewPlayer, PlayerStarts[SpawnIndex]);
+	APawn* Pawn = SpawnDefaultPawnFor(NewPlayer, PlayerStarts[0]);
 
 	if (Pawn)
 	{
@@ -144,7 +153,6 @@ void AFPSGameMode::RespawnPlayers(APlayerController* NewPlayer, int SpawnIndex)
 		if (Character)
 		{
 			//Character->Team = SpawnIndex + 1;
-
 			NewPlayer->SetPawn(Pawn);
 			RestartPlayer(NewPlayer);
 		}
@@ -162,6 +170,7 @@ void AFPSGameMode::StartCountdown()
 		{
 			if (Minutes == 0)
 			{
+				RespawnPlayers();
 				StopGame();
 			}
 			else
