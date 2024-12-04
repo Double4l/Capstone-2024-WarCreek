@@ -34,11 +34,6 @@ void AFPSGameMode::BeginPlay()
 
 	Super::BeginPlay();
 	StartGame();
-
-	//ATargetSpawner* TargetSpawner = FindOb
-	//ATargetSpawner* TargetSpawner = FindObject<ATargetSpawner>(GetWorld()->GetCurrentLevel(), TEXT("BP_TargetSpawner"));
-	//TargetSpawner->Server_SpawnTargets();
-
 }
 
 void AFPSGameMode::StartGame() 
@@ -134,29 +129,26 @@ void AFPSGameMode::HandleNewPlayer(APlayerController* NewPlayer)
 
 void AFPSGameMode::RespawnPlayers() // APlayerController* NewPlayer, int SpawnIndex
 {
-	
 	AFPSGameStateBase* GameState = Cast<AFPSGameStateBase>(GetWorld()->GetGameState());
 
-	//for (int i = 0; i < GameState->PlayerArray.Num(); i++) {
-		
-	//}
+	for (int i = 0; i < (GameState->PlayerArray.Num()); i++) {
+		APlayerController* NewPlayer = Cast<APlayerController>(GameState->PlayerArray[i]->GetOwner());
+		TArray<AActor*> PlayerStarts;
+		UGameplayStatics::GetAllActorsOfClass(GetWorld(), APlayerStart::StaticClass(), PlayerStarts);
 
-	APlayerController* NewPlayer = Cast<APlayerController>(GameState->PlayerArray[0]->GetOwner());
-	TArray<AActor*> PlayerStarts;
-	UGameplayStatics::GetAllActorsOfClass(GetWorld(), APlayerStart::StaticClass(), PlayerStarts);
+		APawn* Pawn = SpawnDefaultPawnFor(NewPlayer, PlayerStarts[i]);
 
-	APawn* Pawn = SpawnDefaultPawnFor(NewPlayer, PlayerStarts[0]);
-
-	if (Pawn)
-	{
-		AFPSCharacterUE5Character* Character = Cast<AFPSCharacterUE5Character>(Pawn);
-		if (Character)
+		if (Pawn)
 		{
-			//Character->Team = SpawnIndex + 1;
-			NewPlayer->SetPawn(Pawn);
-			RestartPlayer(NewPlayer);
+			AFPSCharacterUE5Character* Character = Cast<AFPSCharacterUE5Character>(Pawn);
+			if (Character)
+			{
+				NewPlayer->SetPawn(Pawn);
+				RestartPlayer(NewPlayer);
+			}
 		}
 	}
+
 }
 
 void AFPSGameMode::StartCountdown()
