@@ -147,7 +147,9 @@ void AFPSGameMode::RespawnPlayers() // APlayerController* NewPlayer, int SpawnIn
 			if (Character)
 			{
 				NewPlayer->SetPawn(Pawn);
+				SpawnWeapon();
 				RestartPlayer(NewPlayer);
+				HandleStartingNewPlayer(NewPlayer);
 			}
 		}
 	}
