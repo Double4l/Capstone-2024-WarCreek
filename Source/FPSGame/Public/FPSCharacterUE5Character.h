@@ -81,6 +81,8 @@ public:
 	UFUNCTION()
 	void TakeAnyDamage(AActor* DamagedActor, float Damage, const class UDamageType* DamageType, class AController* InstigatedBy, AActor* DamageCauser);
 	
+	UFUNCTION(Server, Reliable)
+	void Server_Respawn();
 
 protected:
 	/** Called for movement input */

@@ -108,6 +108,16 @@ void AFPSCharacterUE5Character::Server_AssignTeams_Implementation()
 	}
 }
 
+void AFPSCharacterUE5Character::Server_Respawn_Implementation() 
+{
+	AFPSGameMode* GameMode = Cast<AFPSGameMode>(GetWorld()->GetAuthGameMode());
+
+	if (GameMode)
+	{
+		GameMode->RespawnPlayers(Cast<APlayerController>(GetController()), Team - 1);
+		Destroy();
+	}
+}
 
 
 void AFPSCharacterUE5Character::BeginPlay()
