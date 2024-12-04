@@ -12,6 +12,7 @@
 #include "CoinActor.h"
 #include "AppleActor.h"
 #include "BottleActor.h"
+#include "FPSGameStateBase.h"
 
 AFPSGameMode::AFPSGameMode()
 {
@@ -51,18 +52,6 @@ void AFPSGameMode::StartGame()
 }
 void AFPSGameMode::StopGame()
 {
-	// Call Respawn Players Method
-	// Do some stuff when timer has finished
-	//for (int i = 0; i < CoinSpawner->Coins.Num(); i++) 
-	//{
-		//CoinSpawner->Coins[i]->DestroyCoin();
-	//}
-
-	//for (int i = 0; i < TargetSpawner->Bottles.Num(); i++) {
-		//TargetSpawner->Targets[i]->DestroyActor();
-		//TargetSpawner->Bottles[i]->DestroyActor();
-	//}
-
 	TArray<AActor*> CoinActors;
 	UGameplayStatics::GetAllActorsOfClass(GetWorld(), ACoinActor::StaticClass(), CoinActors);
 
@@ -83,6 +72,10 @@ void AFPSGameMode::StopGame()
 	for (int i = 0; i < BottleActors.Num(); i++) {
 		BottleActors[i]->Destroy();
 	}
+
+
+	AFPSGameStateBase* GameState = Cast<AFPSGameStateBase>(GetWorld()->GetGameState());
+	GameState->TargetsLeft = 0;
 
 	GameStarted = false;
 	StartGame();
