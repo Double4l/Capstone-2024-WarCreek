@@ -136,6 +136,9 @@ void AFPSGameMode::RespawnPlayers() // APlayerController* NewPlayer, int SpawnIn
 		TArray<AActor*> PlayerStarts;
 		UGameplayStatics::GetAllActorsOfClass(GetWorld(), APlayerStart::StaticClass(), PlayerStarts);
 
+		AFPSCharacterUE5Character* OldCharacter = Cast<AFPSCharacterUE5Character>(NewPlayer->GetPawn());
+		OldCharacter->Destroy();
+
 		APawn* Pawn = SpawnDefaultPawnFor(NewPlayer, PlayerStarts[i]);
 
 		if (Pawn)

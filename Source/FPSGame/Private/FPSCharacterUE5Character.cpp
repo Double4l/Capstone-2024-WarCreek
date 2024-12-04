@@ -110,14 +110,14 @@ void AFPSCharacterUE5Character::Server_AssignTeams_Implementation()
 
 void AFPSCharacterUE5Character::Server_Respawn_Implementation() 
 {
-	AFPSGameMode* GameMode = Cast<AFPSGameMode>(GetWorld()->GetAuthGameMode());
-	AFPSGameStateBase* GameState = Cast<AFPSGameStateBase>(GetWorld()->GetGameState());
+	//AFPSGameMode* GameMode = Cast<AFPSGameMode>(GetWorld()->GetAuthGameMode());
+	//AFPSGameStateBase* GameState = Cast<AFPSGameStateBase>(GetWorld()->GetGameState());
 
-	if (GameMode)
-	{
+	//if (GameMode)
+	//{
 		//GameMode->RespawnPlayers(Cast<APlayerController>(GetController()), GetCharacterPlayerState()->PlayerTeam);
 		//Destroy();
-	}
+	//}
 }
 
 
