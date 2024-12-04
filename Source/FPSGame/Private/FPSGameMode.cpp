@@ -13,6 +13,7 @@
 #include "AppleActor.h"
 #include "BottleActor.h"
 #include "FPSGameStateBase.h"
+#include "GameFramework/PlayerStart.h"
 
 AFPSGameMode::AFPSGameMode()
 {
@@ -129,9 +130,25 @@ void AFPSGameMode::HandleNewPlayer(APlayerController* NewPlayer)
 		Player->Server_AssignTeams();
 	}
 }
-void AFPSGameMode::RespawnPlayers()
-{
 
+void AFPSGameMode::RespawnPlayers(APlayerController* NewPlayer, int SpawnIndex)
+{
+	TArray<AActor*> PlayerStarts;
+	UGameplayStatics::GetAllActorsOfClass(GetWorld(), APlayerStart::StaticClass(), PlayerStarts);
+
+	APawn* Pawn = SpawnDefaultPawnFor(NewPlayer, PlayerStarts[SpawnIndex]);
+
+	if (Pawn)
+	{
+		AFPSCharacterUE5Character* Character = Cast<AFPSCharacterUE5Character>(Pawn);
+		if (Character)
+		{
+			//Character->Team = SpawnIndex + 1;
+
+			NewPlayer->SetPawn(Pawn);
+			RestartPlayer(NewPlayer);
+		}
+	}
 }
 
 void AFPSGameMode::StartCountdown()

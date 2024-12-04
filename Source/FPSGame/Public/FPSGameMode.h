@@ -50,12 +50,12 @@ public:
 		void SpawnTargets();
 		void SpawnCoins();
 		void HandleNewPlayer();
-		void RespawnPlayers();
 		void StartGame();
 		void StopGame();
 
 		FVector SpawnPoint;
-
+public:
+	void RespawnPlayers(APlayerController* NewPlayer, int SpawnIndex);
 };
 
 

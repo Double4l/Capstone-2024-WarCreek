@@ -114,7 +114,7 @@ void AFPSCharacterUE5Character::Server_Respawn_Implementation()
 
 	if (GameMode)
 	{
-		GameMode->RespawnPlayers(Cast<APlayerController>(GetController()), Team - 1);
+		GameMode->RespawnPlayers(Cast<APlayerController>(GetController()), GetCharacterPlayerState()->PlayerTeam);
 		Destroy();
 	}
 }
