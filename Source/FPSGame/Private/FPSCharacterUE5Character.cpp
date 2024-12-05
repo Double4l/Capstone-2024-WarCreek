@@ -103,6 +103,7 @@ void AFPSCharacterUE5Character::Server_AssignTeams_Implementation()
 					GetCharacterPlayerState()->PlayerTeam = 2;
 					GetGameState()->PlayerTwoLoggedIn = true;
 				}
+				GetCharacterPlayerState()->PlayerScore = 0;
 			}
 		}
 	}
